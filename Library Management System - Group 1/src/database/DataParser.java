@@ -1,3 +1,7 @@
+/**
+* Include JDBC Driver on Build Path
+*/
+
 package database;
 import java.sql.*;
 
@@ -8,7 +12,9 @@ public class DataParser{
 
     /**
     * Constructor for class
-    * Attempts to connect with given info
+    * @ db link to mySQL database
+    * @ user username for database
+    * @ pass password for database
     */
     public DataParser(String db, String user, String pass){
         try{
