@@ -1,6 +1,7 @@
 package database;
 import java.sql.*;
 
+
 public class DataParser{
     private Connection connect;
     private Statement state;
@@ -27,21 +28,19 @@ public class DataParser{
     /**
     * Performs query based on string from user
     */
-    public void performQuery(String query){
+    public ResultSet performQuery(String query){
         try{
             if(validateQuery(query)){
                 System.out.println("Query being performed is " + query);
                 ResultSet result = state.executeQuery(query);
-                System.out.println("Here are the records");
-                while(result.next()){
-                    // TODO: Configure this to do the shit it has to idfk
-                }
+                return result;
             }
         }
         catch(SQLException ex) {
            ex.printStackTrace();
            connected = false;
         }
+        return null;
     }
 
     /**
