@@ -2,6 +2,7 @@ package common;
 
 import java.awt.EventQueue;
 
+import database.DataParser;
 import view.Login_frame;
 
 public class Launcher {
@@ -14,6 +15,7 @@ public class Launcher {
 			public void run() {
 				try {
 					window.frame.setVisible(true);
+					DataParser data = new DataParser("test", "1", "2");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

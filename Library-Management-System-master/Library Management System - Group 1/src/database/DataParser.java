@@ -19,7 +19,17 @@ public class DataParser{
     */
     public DataParser(String db, String user, String pass){
         try{
-            connect = DriverManager.getConnection(db, user, pass);
+        	
+        	String hostname = "library.cmpuah4ctyme.us-east-1.rds.amazonaws.com";
+        	String port = "3306";
+        	String dbname = "library";
+        	String username = "lib";
+        	String pw = "Library1";
+        	String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname + "?user=" + username + "&password=" + pw;
+        	
+        	
+        	connect = DriverManager.getConnection(jdbcUrl);
+            //connect = DriverManager.getConnection(db, user, pass);
             state = connect.createStatement();
             connected = true;
         }
