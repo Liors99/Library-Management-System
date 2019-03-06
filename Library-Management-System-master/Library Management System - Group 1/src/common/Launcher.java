@@ -15,7 +15,7 @@ public class Launcher {
 			public void run() {
 				try {
 					window.frame.setVisible(true);
-					DataParser data = new DataParser("test", "1", "2");
+					DataParser data = new DataParser();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -17,7 +17,7 @@ public class DataParser{
     * @ user username for database
     * @ pass password for database
     */
-    public DataParser(String db, String user, String pass){
+    public DataParser(){
         try{
         	
         	String hostname = "library.cmpuah4ctyme.us-east-1.rds.amazonaws.com";
@@ -25,8 +25,9 @@ public class DataParser{
         	String dbname = "library";
         	String username = "lib";
         	String pw = "Library1";
-        	String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname + "?user=" + username + "&password=" + pw;
         	
+        	
+        	String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname + "?user=" + username + "&password=" + pw;
         	
         	connect = DriverManager.getConnection(jdbcUrl);
             //connect = DriverManager.getConnection(db, user, pass);

@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import common.LoginVerifier;
+
 import java.awt.FlowLayout;
 import java.awt.Color;
 import javax.swing.GroupLayout;
@@ -13,6 +16,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -145,10 +149,7 @@ public class Authenticated_frame extends JFrame {
 		JButton room_button = new JButton("borrow");
 		
 		JButton borrow_button = new JButton("order");
-		borrow_button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		GroupLayout gl_sidebar_panel = new GroupLayout(sidebar_panel);
 		gl_sidebar_panel.setHorizontalGroup(
 			gl_sidebar_panel.createParallelGroup(Alignment.LEADING)
@@ -199,5 +200,22 @@ public class Authenticated_frame extends JFrame {
 		);
 		topbar_panel.setLayout(gl_topbar_panel);
 		contentPane.setLayout(gl_contentPane);
-	}
+		
+		
+		borrow_button.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				frame.dispose();
+				Borrow_frame borrow = new Borrow_frame();
+				System.out.println("--> To borrow");
+				borrow.frame.setVisible(true);
+			}
+		});
+		
+		
+		
+	}	
+
 }
