@@ -56,6 +56,8 @@ public class Login_frame extends JFrame {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 959, 617);
+		frame.setTitle("Login");
+
 		bgPane = new JPanel();
 		bgPane.setBackground(Color.DARK_GRAY);
 		bgPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -51,6 +51,8 @@ public class Authenticated_frame extends JFrame {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 959, 617);
+		frame.setTitle("UofT Library");
+
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,15 +142,12 @@ public class Authenticated_frame extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		
-		JButton order_button = new JButton("book room");
-		order_button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		JButton room_button = new JButton("book room");
+
 		
-		JButton room_button = new JButton("borrow");
+		JButton borrow_button = new JButton("borrow");
 		
-		JButton borrow_button = new JButton("order");
+		JButton order_button = new JButton("order");
 
 		GroupLayout gl_sidebar_panel = new GroupLayout(sidebar_panel);
 		gl_sidebar_panel.setHorizontalGroup(

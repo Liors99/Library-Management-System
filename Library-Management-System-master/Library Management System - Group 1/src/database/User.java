@@ -9,9 +9,7 @@ public class User {
 	}
 	
 	public boolean test(String user) {
-		//String insert = String.format("INSERT INTO `books_and_others` VALUES (8,'testtest',NULL,20,10,NULL,NULL,NULL,NULL,NULL,20.69)");
 		
-		//data.performInsert(insert);
 		String q = String.format("SELECT * FROM books_and_others WHERE name = '" + user + "'"); 
 		
 		ResultSet r = data.performQuery(q);

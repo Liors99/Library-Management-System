@@ -17,10 +17,10 @@ public class Launcher {
 				try {
 					
 					window.frame.setVisible(true);
-					DataParser data = new DataParser();
-					User test = new User(data);
-					test.test("Chris and his kicks");
 					
+					/* Testing search bar */
+					DataParser testData = new DataParser();
+					User testStudent = new User(testData);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
