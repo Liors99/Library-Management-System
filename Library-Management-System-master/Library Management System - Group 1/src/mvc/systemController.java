@@ -34,7 +34,7 @@ public class systemController {
 			String pw = view.getPW();
 			model.checkAuthentication(user, pw);
 			
-			if (model.getAuthentication() == true) {
+			if (model.getAuthentication()) {
 				
 				/* Here we set up if it's authenticated */
 				view.setFalse();
@@ -45,10 +45,13 @@ public class systemController {
 				authView.addBorrowListener(new BorrowListener());
 				authView.addShopListener(new ShopListener());
 				
+			} else {
+				JOptionPane.showMessageDialog(view, "Login unsuccessful");
 			}
 		}
 	}
 	
+	/* Associated with registration button, will give a popup based on if the registration was successful or not */
 	class RegisterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
@@ -68,12 +71,14 @@ public class systemController {
 		}
 	}
 	
+	/* Switches cards in authView to borrow */
 	class BorrowListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			authView.switchToBorrow();
 		}
 	}
 	
+	/* Switches cards in authView to shop */
 	class ShopListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			authView.switchToShop();
