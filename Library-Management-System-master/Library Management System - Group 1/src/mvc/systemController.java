@@ -54,9 +54,13 @@ public class systemController {
 			try {
 				String user = view.getUser();
 				String pw = view.getPW();
-				LoginVerifier.Store(user, pw);
+				if (LoginVerifier.Store(user, pw)) {
+					JOptionPane.showMessageDialog(view, "User successfully registered");
+				} else {
+					JOptionPane.showMessageDialog(view, "Username already taken");
+
+				}
 				
-				JOptionPane.showMessageDialog(view, "User successfully registered");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
