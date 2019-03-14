@@ -1,4 +1,3 @@
-/database/
-/common/
 /view/
-/GenerateToken.class
+/mvc/
+/common/
