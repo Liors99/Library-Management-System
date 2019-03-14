@@ -30,6 +30,7 @@ public class HomeView extends JPanel {
 	private JLabel lblName;
 	private JLabel nameVar;
 	private JButton btnAccountInfo;
+	private AccountView acc;
 	
 	public HomeView() {
 		
@@ -92,6 +93,7 @@ public class HomeView extends JPanel {
 				
 		borrow = new BorrowView();
 		shop = new ShopView();
+		acc = new AccountView();
 		
 		defaultcard = new JPanel();
 		cards.add(defaultcard, "name_93905002767489");
@@ -125,6 +127,7 @@ public class HomeView extends JPanel {
 		
 		cards.add(borrow, "Borrow");
 		cards.add(shop, "Shop");
+		cards.add(acc, "Account");
 		cl = (CardLayout)(cards.getLayout());
 
 	}
@@ -141,6 +144,11 @@ public class HomeView extends JPanel {
 		btnShop.addActionListener(listenForShop);
 	}
 	
+	void addAccountListener(ActionListener listenForAccount) {
+		
+		btnAccountInfo.addActionListener(listenForAccount);
+	}
+	
 	public void switchToBorrow() {
 		cl.show(cards, "Borrow");
 	}
@@ -149,7 +157,19 @@ public class HomeView extends JPanel {
 		cl.show(cards,  "Shop");
 	}
 	
+	public void switchToAccount() {
+		cl.show(cards, "Account");
+	}
+	
 	public void setName(String name) {
 		nameVar.setText(name);
+	}
+	/*
+	public void addFunds(int amount) {
+		acc.addFunds(amount);
+	}
+	*/
+	public AccountView getView() {
+		return acc;
 	}
 }

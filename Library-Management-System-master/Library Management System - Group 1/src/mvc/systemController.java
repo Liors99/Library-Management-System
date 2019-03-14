@@ -44,6 +44,9 @@ public class systemController {
 				/* AuthView functions here */
 				authView.addBorrowListener(new BorrowListener());
 				authView.addShopListener(new ShopListener());
+				authView.addAccountListener(new AccountListener());
+				
+				
 				
 			} else {
 				JOptionPane.showMessageDialog(view, "Login unsuccessful");
@@ -84,5 +87,17 @@ public class systemController {
 			authView.switchToShop();
 		}
 	}
+	
+	
+	/* Switches cards in authView to shop */
+	class AccountListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			authView.switchToAccount();
+			AccountView accView = authView.getView();
+			AccountModel accModel = new AccountModel();
+			AccountController accCtrl = new AccountController(accView, accModel);
+			
+		}
+	}	
 
 }
