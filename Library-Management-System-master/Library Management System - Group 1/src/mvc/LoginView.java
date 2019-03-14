@@ -45,7 +45,7 @@ public class LoginView extends JFrame {
 		
 		display = new JPanel();
 		display.setBackground(new Color(255, 255, 255));
-		this.setSize(1000, 530);
+		this.setSize(1000, 600);
 		this.setResizable(false);
 		
 		

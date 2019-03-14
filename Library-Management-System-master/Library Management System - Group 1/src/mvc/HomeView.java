@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
+import java.awt.event.ActionEvent;
 
 public class HomeView extends JPanel {
 
@@ -28,6 +29,7 @@ public class HomeView extends JPanel {
 	private JPanel defaultcard;
 	private JLabel lblName;
 	private JLabel nameVar;
+	private JButton btnAccountInfo;
 	
 	public HomeView() {
 		
@@ -51,12 +53,19 @@ public class HomeView extends JPanel {
 		btnBorrow = new JButton("borrow");
 		
 		btnShop = new JButton("shop");
+		
+		btnAccountInfo = new JButton("account info");
+		btnAccountInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GroupLayout gl_menuBar = new GroupLayout(menuBar);
 		gl_menuBar.setHorizontalGroup(
 			gl_menuBar.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuBar.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_menuBar.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnAccountInfo, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnBorrow, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
 						.addComponent(btnShop, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
@@ -68,7 +77,9 @@ public class HomeView extends JPanel {
 					.addComponent(btnBorrow)
 					.addGap(18)
 					.addComponent(btnShop)
-					.addContainerGap(275, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+					.addComponent(btnAccountInfo, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		menuBar.setLayout(gl_menuBar);
 		setLayout(null);
@@ -85,7 +96,7 @@ public class HomeView extends JPanel {
 		defaultcard = new JPanel();
 		cards.add(defaultcard, "name_93905002767489");
 		
-		lblName = new JLabel("NAME:");
+		lblName = new JLabel("name:");
 		lblName.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
 		lblName.setForeground(new Color(0, 191, 255));
 		
@@ -131,11 +142,11 @@ public class HomeView extends JPanel {
 	}
 	
 	public void switchToBorrow() {
-		cl.show(borrow, "Borrow");
+		cl.show(cards, "Borrow");
 	}
 	
 	public void switchToShop() {
-		cl.show(shop,  "Shop");
+		cl.show(cards,  "Shop");
 	}
 	
 	public void setName(String name) {
