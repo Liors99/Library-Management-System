@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 public class ShopView extends JPanel {
 
 	public ShopView() {
+		setBackground(new Color(255, 255, 255));
 		
 		this.setBounds(155, 62, 835, 457);
 		

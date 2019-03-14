@@ -96,6 +96,7 @@ public class HomeView extends JPanel {
 		acc = new AccountView();
 		
 		defaultcard = new JPanel();
+		defaultcard.setBackground(new Color(255, 255, 255));
 		cards.add(defaultcard, "name_93905002767489");
 		
 		lblName = new JLabel("name:");

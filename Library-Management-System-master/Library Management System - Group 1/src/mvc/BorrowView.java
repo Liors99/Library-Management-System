@@ -10,6 +10,7 @@ public class BorrowView extends JPanel {
 	private JTextField textField;
 	
 	public BorrowView() {
+		setBackground(new Color(255, 255, 255));
 		
 		this.setBounds(155, 62, 835, 457);
 		

@@ -16,6 +16,7 @@ public class AccountView extends JPanel{
 	private JTextField addFundsTF;
 	
 	AccountView() {
+		setBackground(new Color(255, 255, 255));
 		this.setBounds(155, 62, 835, 457);
 		
 		JLabel lblBorrowed = new JLabel("borrowed items:");
