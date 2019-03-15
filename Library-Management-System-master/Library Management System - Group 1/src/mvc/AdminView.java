@@ -51,163 +51,103 @@ public class AdminView extends JPanel {
 		);
 		
 		JLabel lblAddUser = new JLabel("add user");
+		lblAddUser.setBounds(10, 11, 67, 23);
 		lblAddUser.setForeground(new Color(60, 179, 113));
 		lblAddUser.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
 		
 		JLabel lblUsername = new JLabel("username");
+		lblUsername.setBounds(17, 52, 60, 20);
 		lblUsername.setForeground(new Color(0, 191, 255));
 		lblUsername.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		JLabel lblNewLabel = new JLabel("password");
+		lblNewLabel.setBounds(17, 86, 59, 20);
 		lblNewLabel.setForeground(new Color(0, 191, 255));
 		lblNewLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		textField = new JTextField();
+		textField.setBounds(115, 54, 163, 20);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
+		textField_1.setBounds(115, 88, 163, 20);
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("add");
+		btnNewButton.setBounds(296, 85, 105, 25);
 		btnNewButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 12));
 		
 		JLabel lblNewLabel_1 = new JLabel("remove users");
+		lblNewLabel_1.setBounds(10, 371, 105, 23);
 		lblNewLabel_1.setForeground(new Color(220, 20, 60));
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
 		
 		JLabel lblNewLabel_2 = new JLabel("user to remove");
+		lblNewLabel_2.setBounds(18, 412, 93, 20);
 		lblNewLabel_2.setForeground(new Color(0, 191, 255));
 		lblNewLabel_2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		textField_2 = new JTextField();
+		textField_2.setBounds(121, 414, 157, 20);
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("remove");
-		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEADING);
+		btnNewButton_1.setBounds(296, 412, 105, 23);
 		btnNewButton_1.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
 		
 		JLabel lblEditUser = new JLabel("edit user");
+		lblEditUser.setBounds(10, 154, 69, 23);
 		lblEditUser.setForeground(new Color(255, 165, 0));
 		lblEditUser.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
 		
 		JLabel lblNewLabel_3 = new JLabel("user to edit");
+		lblNewLabel_3.setBounds(18, 195, 71, 20);
 		lblNewLabel_3.setForeground(new Color(0, 191, 255));
 		lblNewLabel_3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		textField_3 = new JTextField();
+		textField_3.setBounds(115, 197, 163, 20);
 		textField_3.setColumns(10);
 		
 		JLabel lblSetUserRank = new JLabel("set user rank");
+		lblSetUserRank.setBounds(17, 250, 79, 20);
 		lblSetUserRank.setForeground(new Color(0, 191, 255));
 		lblSetUserRank.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		String[] rankStrings = {"Student", "Libraian", "Admin", "Staff", "Faculty"};
 		JComboBox rankComboBox = new JComboBox(rankStrings);
+		rankComboBox.setBounds(115, 252, 163, 20);
 		
 		JLabel lblNewLabel_4 = new JLabel("clear fees");
+		lblNewLabel_4.setBounds(18, 302, 59, 20);
 		lblNewLabel_4.setForeground(new Color(0, 191, 255));
 		lblNewLabel_4.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		JRadioButton rdbtnClearFee = new JRadioButton("");
+		rdbtnClearFee.setBounds(117, 302, 21, 21);
 		
 		JButton btnNewButton_2 = new JButton("apply changes");
+		btnNewButton_2.setBounds(296, 302, 105, 23);
 		btnNewButton_2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblAddUser)
-										.addGroup(gl_panel.createSequentialGroup()
-											.addComponent(lblNewLabel)
-											.addGap(1))
-										.addComponent(lblUsername))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(textField, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-										.addComponent(textField_1, Alignment.TRAILING))
-									.addGap(18)
-									.addComponent(btnNewButton))
-								.addComponent(lblNewLabel_1)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(18)
-							.addComponent(lblNewLabel_2)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_2)))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnNewButton_1)
-					.addGap(570))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblEditUser)
-					.addContainerGap(921, Short.MAX_VALUE))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblNewLabel_4)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(rdbtnClearFee)
-							.addPreferredGap(ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-							.addComponent(btnNewButton_2))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblSetUserRank)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(rankComboBox, 0, 177, Short.MAX_VALUE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblNewLabel_3)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
-					.addGap(722))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblAddUser)
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblUsername))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton))
-					.addGap(44)
-					.addComponent(lblEditUser)
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_3)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(33)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblSetUserRank)
-						.addComponent(rankComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(43)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblNewLabel_4)
-						.addComponent(rdbtnClearFee)
-						.addComponent(btnNewButton_2))
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(33)
-							.addComponent(lblNewLabel_1)
-							.addGap(18)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel_2)
-								.addComponent(btnNewButton_1)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(77)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(67))
-		);
-		panel.setLayout(gl_panel);
+		panel.setLayout(null);
+		panel.add(lblAddUser);
+		panel.add(lblNewLabel);
+		panel.add(lblUsername);
+		panel.add(textField);
+		panel.add(textField_1);
+		panel.add(btnNewButton);
+		panel.add(lblNewLabel_1);
+		panel.add(lblNewLabel_2);
+		panel.add(textField_2);
+		panel.add(btnNewButton_1);
+		panel.add(lblEditUser);
+		panel.add(lblNewLabel_4);
+		panel.add(rdbtnClearFee);
+		panel.add(btnNewButton_2);
+		panel.add(lblSetUserRank);
+		panel.add(rankComboBox);
+		panel.add(lblNewLabel_3);
+		panel.add(textField_3);
 		
 		JLabel lblAdmin = new JLabel("ADMIN");
 		lblAdmin.setForeground(new Color(165, 42, 42));
