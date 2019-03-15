@@ -15,9 +15,9 @@ public class systemController {
 	private LoginView view;
 	private LoginModel model;
 
-	HomeView authView = new HomeView();
+	//HomeView authView = new HomeView();
+	AdminView authView = new AdminView();
 	HomeModel authModel = new HomeModel();
-	
 	/* Constructor */
 	public systemController(LoginView view, LoginModel model) {
 		this.view = view;
@@ -42,10 +42,12 @@ public class systemController {
 				
 				authView.setName(user);
 				/* AuthView functions here */
+				
+				/*
 				authView.addBorrowListener(new BorrowListener());
 				authView.addShopListener(new ShopListener());
 				authView.addAccountListener(new AccountListener());
-				
+				*/
 				
 				
 			} else {
@@ -53,6 +55,13 @@ public class systemController {
 			}
 		}
 	}
+	
+	/*
+	 * ####################################################################################################
+	 * ################################## STUDENT VIEW ###################################################
+	 * ##################################################################################################
+	 */
+	
 	
 	/* Associated with registration button, will give a popup based on if the registration was successful or not */
 	class RegisterListener implements ActionListener {
@@ -77,14 +86,14 @@ public class systemController {
 	/* Switches cards in authView to borrow */
 	class BorrowListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			authView.switchToBorrow();
+			//authView.switchToBorrow();
 		}
 	}
 	
 	/* Switches cards in authView to shop */
 	class ShopListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			authView.switchToShop();
+			//authView.switchToShop();
 		}
 	}
 	
@@ -92,12 +101,23 @@ public class systemController {
 	/* Switches cards in authView to shop */
 	class AccountListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			authView.switchToAccount();
-			AccountView accView = authView.getView();
+			//authView.switchToAccount();
+			//AccountView accView = authView.getView();
 			AccountModel accModel = new AccountModel();
 			AccountController accCtrl = new AccountController(accView, accModel);
 			
 		}
 	}	
+	
+	
+	
+	
+	
+	/*
+	 * ####################################################################################################
+	 * #################################### ADMIN VIEW ###################################################
+	 * ##################################################################################################
+	 */
+	
 
 }
