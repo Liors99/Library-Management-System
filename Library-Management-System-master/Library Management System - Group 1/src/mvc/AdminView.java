@@ -114,7 +114,7 @@ public class AdminView extends JPanel {
 		lblSetUserRank.setForeground(new Color(0, 191, 255));
 		lblSetUserRank.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
-		String[] rankStrings = {"Student", "Libraian", "Admin", "Staff", "Faculty"};
+		String[] rankStrings = {"Student", "Librarian", "Admin", "Staff", "Faculty"};
 		JComboBox rankComboBox = new JComboBox(rankStrings);
 		rankComboBox.setBounds(115, 252, 163, 20);
 		
