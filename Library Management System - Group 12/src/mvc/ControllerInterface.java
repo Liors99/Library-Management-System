@@ -2,12 +2,18 @@ package mvc;
 
 import javax.swing.JPanel;
 
+import common.SecureAuthenticator;
+import database.DataParser;
+
 /**
  * 
  * An interface that every controller should have for setting the panel
  *
  */
 public interface ControllerInterface {
+	
+	DataParser d= new DataParser();
+	SecureAuthenticator auth= new SecureAuthenticator(d);
 	
 	/**
 	 * Sets the current JPanel

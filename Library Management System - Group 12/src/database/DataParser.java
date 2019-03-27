@@ -150,4 +150,29 @@ public class DataParser{
     public boolean isConnected(){
         return connected;
     }
+    
+    /**
+     * 
+     * @param user username to add
+     * @param salt salt of user 
+     * @param hash hash of user
+     * @return if user was added
+     */
+    public boolean addUser(String user, byte[] salt, byte[] hash) {
+    	try {
+    		String sql = "INSERT INTO users_and_passwords (username, salt, hash) VALUES(?, ?, ?)";
+    	    PreparedStatement pstmt = connect.prepareStatement(sql);
+    	    pstmt.setString(1, user);
+    	    pstmt.setBytes(2, salt);
+    	    pstmt.setBytes(3, hash);
+    	    pstmt.executeUpdate();
+    	    pstmt.close();
+    	    return true;
+    	}
+    	catch(SQLException ex) {
+    		ex.printStackTrace();
+            connected = false;
+            return false;
+    	}
+    }
 }

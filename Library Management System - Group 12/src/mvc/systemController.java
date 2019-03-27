@@ -10,12 +10,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import common.LoginVerifier;
+import common.SecureAuthenticator;
+import database.DataParser;
 
 public class systemController implements ControllerInterface{
 	
 	private LoginView view;
 	private LoginModel model;
 	private MainFrame frame;
+	private DataParser d;
 
 	/* Constructor */
 	public systemController(LoginView view, LoginModel model, MainFrame frame) {
@@ -57,7 +60,7 @@ public class systemController implements ControllerInterface{
 			System.out.println("button");
 			String user = view.getUser();
 			String pw = view.getPW();
-			model.checkAuthentication(user, pw);
+			model.checkAuthentication(user, pw, auth);
 			
 			if (model.getAuthentication()) {
 				

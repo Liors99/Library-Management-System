@@ -16,14 +16,15 @@ public class run {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//DataParser testData = new DataParser();
 		
 		MainFrame frame= new MainFrame();
 		LoginView view = new LoginView();
 		frame.setPanel(view);
 		LoginModel model = new LoginModel();
-		systemController Controller = new systemController(view, model,frame);
+		systemController Controller = new systemController(view, model, frame);
 		
-		DataParser testData = new DataParser();
+		
 		
 		
 

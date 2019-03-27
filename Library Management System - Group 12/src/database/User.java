@@ -102,8 +102,7 @@ public class User {
 	 */
 	public void createUser(String user, byte[] s, byte[] h) {
 		if(!userExists(user)) {
-			String newUser  = String.format("INSERT INTO users_and_passwords (username, salt, hash) VALUES (%s, " + s + h + ");", user);
-			data.performInsert(newUser);
+			data.addUser(user, s, h);
 		}
 	}
 }
