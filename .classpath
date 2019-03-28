@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Library Management System - Group 12/src"/>
+	<classpathentry kind="src" path="Library-Management-System-master/Library Management System - Group 1/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Library Management System - Group 12/src/database/lib/mysql-connector-java-8.0.15.jar"/>
+	<classpathentry kind="output" path="Library Management System - Group 12/bin"/>
+</classpath>

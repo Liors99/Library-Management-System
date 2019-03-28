@@ -22,7 +22,6 @@ public class run {
 		frame.setPanel(view);
 		LoginModel model = new LoginModel();
 		systemController Controller = new systemController(view, model,frame);
-		
 		DataParser testData = new DataParser();
 		
 		

@@ -12,7 +12,7 @@ public class BookController {
 	
 	
 	
-	BookController(BooksAndStuff book, Book_view view, BookModel model){
+	public BookController(BooksAndStuff book, Book_view view, BookModel model){
 		this.book = book;
 		this.view = view;
 		this.model = model;

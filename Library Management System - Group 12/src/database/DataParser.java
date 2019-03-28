@@ -13,9 +13,6 @@ public class DataParser{
 
     /**
     * Constructor for class
-    * @ db link to mySQL database
-    * @ user username for database
-    * @ pass password for database
     */
     public DataParser(){
         try{
@@ -109,6 +106,31 @@ public class DataParser{
            ex.printStackTrace();
            connected = false;
         }
+    }
+    
+    /**
+     * 
+     * @param type
+     * @param query
+     * @return
+     */
+    public ResultSet search(String type, String term) {
+    	try{
+    		String query  = "";
+    		if(type == "name" || type == "author" || type == "course") {
+    			query = "select * from books_and_others where " + type + " like \"%" + term + "%\";";
+    			System.out.println("Query being performed is " + query);
+    			return state.executeQuery(query);
+    		}
+    		else {
+    			return null;
+    		}
+    	}
+        catch(SQLException ex) {
+           ex.printStackTrace();
+           connected = false;
+        }
+        return null;
     }
 
     /**

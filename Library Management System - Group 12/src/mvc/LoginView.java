@@ -22,7 +22,7 @@ public class LoginView extends JPanel {
 	
 	/* Text fields */
 	private JTextField userTF = new JTextField(10);
-	private JTextField pwTF = new JTextField(10);
+	private JPasswordField pwTF = new JPasswordField(10);
 	
 	/* Labels */
 	private JLabel userLabel = new JLabel("username: ");

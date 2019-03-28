@@ -24,7 +24,7 @@ public class HomeView extends JPanel {
 	private JButton btnShop;
 	private JPanel cards;
 	private CardLayout cl;
-	private BorrowView borrow;
+	private SearchView borrow;
 	private ShopView shop;
 	private JPanel defaultcard;
 	private JLabel lblName;
@@ -98,7 +98,7 @@ public class HomeView extends JPanel {
 		
 		/* Manual code */
 				
-		borrow = new BorrowView();
+		borrow = new SearchView();
 		shop = new ShopView();
 		acc = new AccountView();
 		

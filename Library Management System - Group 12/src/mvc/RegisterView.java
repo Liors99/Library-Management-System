@@ -21,7 +21,7 @@ public class RegisterView extends JPanel {
 	
 	/* Text fields */
 	private JTextField textUsername = new JTextField(10);
-	private JTextField textPW = new JTextField(10);
+	private JPasswordField textPW = new JPasswordField(10);
 	
 	/* Labels */
 	private JLabel userLabel = new JLabel("username: ");
@@ -39,7 +39,7 @@ public class RegisterView extends JPanel {
 	private JTextField textName;
 	private JTextField textLastName;
 	private JTextField textID;
-	private final JTextField textConfirmPass = new JTextField(10);
+	private final JPasswordField textConfirmPass = new JPasswordField(10);
 	
 	
 	public RegisterView() {

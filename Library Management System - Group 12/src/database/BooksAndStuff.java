@@ -12,7 +12,7 @@ public class BooksAndStuff {
 	
 	int numCheckedOut;
 	int total;
-	
+
 	DataParser data = new DataParser();
 	
 	

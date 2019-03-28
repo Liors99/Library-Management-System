@@ -54,7 +54,7 @@ public class Book_view {
 	//	this.book = book;
 		frame= new JFrame();
 		frame.setResizable(false);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setBounds(100, 100, 959, 617);
 		frame.setTitle("UofT Library");
 
