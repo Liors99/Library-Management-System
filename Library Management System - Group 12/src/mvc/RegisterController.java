@@ -7,8 +7,6 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import common.LoginVerifier;
-
 public class RegisterController implements ControllerInterface{
 	
 	private RegisterView view;
@@ -31,6 +29,29 @@ public class RegisterController implements ControllerInterface{
 	/* Associated with registration button, will give a popup based on if the registration was successful or not */
 	class RegisterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			
+			String user = view.getUser();
+			String pw = view.getPW();
+			String pw_confirm= view.getPWconfirm();
+			
+			if(user.equals("")) {
+				JOptionPane.showMessageDialog(view, "Please enter a username");
+				return;
+			}
+			
+			if(pw.equals(pw_confirm)) {
+				if (auth.Store(user, pw)) {
+					JOptionPane.showMessageDialog(view, "User successfully registered");
+				} else {
+					JOptionPane.showMessageDialog(view, "Username already taken");
+
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(view, "Password confirmation failed");
+			}
+			
+			/*
 			try {
 				String user = view.getUser();
 				String pw = view.getPW();
@@ -58,7 +79,10 @@ public class RegisterController implements ControllerInterface{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		*/
 		}
+		
 	}
 	
 	/*

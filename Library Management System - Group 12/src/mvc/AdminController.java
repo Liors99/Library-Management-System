@@ -4,9 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import common.LoginVerifier;
 
-public class AdminController extends CurrentController{
+public class AdminController extends CurrentController implements ControllerInterface{
 	
 	private AdminView view;
 	private AdminModel model;
@@ -28,16 +27,7 @@ public class AdminController extends CurrentController{
 	/* Adds a user to the system */
 	class AddListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			
-			
-			//Add user to the database (will be changed later)
-			try {
-				LoginVerifier.Store(view.GetUserAdd(), view.GetPwdAdd());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			auth.Store(view.GetUserAdd(), view.GetPwdAdd());
 		}
 	}
 	

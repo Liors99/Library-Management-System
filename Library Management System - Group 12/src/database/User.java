@@ -49,6 +49,7 @@ public class User {
 		String q = String.format("SELECT * FROM users_and_passwords WHERE username = '" + user + "'");
 		ResultSet r = data.performQuery(q);
 		try {
+			r.next();
 			return (byte[])r.getObject("hash");
 		}
 		catch(SQLException ex) {
@@ -66,6 +67,7 @@ public class User {
 		String q = String.format("SELECT * FROM users_and_passwords WHERE username = '" + user + "'");
 		ResultSet r = data.performQuery(q);
 		try {
+			r.next();
 			return (byte[])r.getObject("salt");
 		}
 		catch(SQLException ex) {
@@ -102,8 +104,7 @@ public class User {
 	 */
 	public void createUser(String user, byte[] s, byte[] h) {
 		if(!userExists(user)) {
-			String newUser  = String.format("INSERT INTO users_and_passwords (username, salt, hash) VALUES (%s, " + s + h + ");", user);
-			data.performInsert(newUser);
+			data.addUser(user, s, h);
 		}
 	}
 }
