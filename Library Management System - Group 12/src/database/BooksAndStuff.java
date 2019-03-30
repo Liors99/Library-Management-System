@@ -8,6 +8,7 @@ public class BooksAndStuff {
 	private int ID;
 	private String name;
 	private String author;
+	//private int id;
 	
 	
 	int numCheckedOut;
@@ -97,5 +98,8 @@ public class BooksAndStuff {
 		this.name = name;
 	}
 
+	public int getId() {
+		return ID;
+	}
 	
 }

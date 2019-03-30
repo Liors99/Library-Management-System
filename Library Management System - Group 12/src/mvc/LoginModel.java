@@ -33,9 +33,20 @@ public class LoginModel extends CurrentModel{
 		*/
 	}
 	
+	public boolean checkAdmin(String x, String y, SecureAuthenticator auth) {
+		if(auth.verifyAdmin(x, y)) {
+			//this.authenticated=true;
+			//System.out.println("authenticated");
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public boolean getAuthentication() {
 		return this.authenticated;
 	}
+	
 }
 
 

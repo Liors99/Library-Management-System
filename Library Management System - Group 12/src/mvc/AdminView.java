@@ -23,6 +23,8 @@ public class AdminView extends JPanel {
 	private JTextField textUserToRank;
 	
 	
+	private JComboBox rankComboBox;
+	
 	private JButton btnAddUser;
 	private JButton btnUserRemove;
 	private JButton btnEditUser;
@@ -120,7 +122,7 @@ public class AdminView extends JPanel {
 		lblSetUserRank.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 14));
 		
 		String[] rankStrings = {"Student", "Librarian", "Admin", "Staff", "Faculty"};
-		JComboBox rankComboBox = new JComboBox(rankStrings);
+		rankComboBox = new JComboBox(rankStrings);
 		rankComboBox.setBounds(115, 252, 163, 20);
 		
 		JLabel lblNewLabel_4 = new JLabel("clear fees");
@@ -178,6 +180,15 @@ public class AdminView extends JPanel {
 		return textUserPwdAdd.getText();
 	}
 	
+	public String GetUserDelete() {
+		return textUserRemove.getText();
+	}
+	public String GetUserRank() {
+		return textUserToRank.getText();
+	}
+	public String GetRankValue() {
+		return (String) rankComboBox.getSelectedItem();
+	}
 	public void addEditUserListener(ActionListener listenEdit) {
 		btnEditUser.addActionListener(listenEdit);
 	}

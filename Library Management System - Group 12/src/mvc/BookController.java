@@ -3,6 +3,7 @@ package mvc;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import database.BooksAndStuff;
+import database.User;
 
 public class BookController {
 	//	@Override
@@ -34,6 +35,9 @@ public class BookController {
 			System.out.println("All copies are currently unavailable");
 		}else {
 			System.out.println("Book has been reserved!");
+			
+			//User.getData().performQuery("SELECT id");
+			//book.getDataParser().performInsert("INSERT INTO rentals (idrental, rental_Date, iditem, idrenter, lastupdate) VALUES (" + User.name )
 			book.getDataParser().performUpdate("UPDATE books_and_others SET qCheckedOut = " + (numCheckedOut + 1) + " WHERE name = '" + book.getName() + "'" );;
 		}
 	}

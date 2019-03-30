@@ -2,8 +2,10 @@ package database;
 import java.sql.*;
 
 public class User {
-	DataParser data;
-	
+	static DataParser data;
+	static String username;
+	static int id;
+
 	public User(DataParser d) {
 		data = d;
 	}
@@ -76,6 +78,22 @@ public class User {
 		}
 	}
 	
+	public int getAccountType(String user) {
+		String q = String.format("SELECT * FROM users_and_passwords WHERE username = '" + user + "'");
+		ResultSet r = data.performQuery(q);
+		try {
+			 r.next();
+			 if(r.getObject("accountType") != null) {
+				 return	(int) r.getObject("accountType");
+			 }
+			 return 0;
+			 
+		}
+		catch(SQLException ex) {
+			return -1;
+		}
+	}
+	
 	/**
 	 * 
 	 * @param user username to set hash for
@@ -106,5 +124,14 @@ public class User {
 		if(!userExists(user)) {
 			data.addUser(user, s, h);
 		}
+	}
+	public static DataParser getData(){
+		return data;
+	}
+	public static String getUserName() {
+		return username;
+	}
+	public static void setUserName(String usernm) {
+		username = usernm;
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import common.SecureAuthenticator;
 import database.DataParser;
+import database.User;
 
 public class systemController implements ControllerInterface{
 	
@@ -64,7 +65,7 @@ public class systemController implements ControllerInterface{
 			if (model.getAuthentication()) {
 				
 				// Check if current user is the admin, if he is then switch to admin window
-				if(user.equals("admin")) {
+				if(user.equals("admin") || model.checkAdmin(user, pw, auth)) {
 					AdminView authView = new AdminView();
 					AdminModel authModel = new AdminModel();
 					AdminController authCont = new AdminController(authView, authModel);
@@ -72,6 +73,7 @@ public class systemController implements ControllerInterface{
 					setPanel(view, authView, frame);
 					
 					authView.setName(user);
+					User.setUserName(user);
 				}
 				else {
 					HomeView authView = new HomeView();
@@ -81,6 +83,8 @@ public class systemController implements ControllerInterface{
 					setPanel(view, authView, frame);
 					
 					authView.setName(user);
+					User.setUserName(user);
+					
 					
 				}
 				

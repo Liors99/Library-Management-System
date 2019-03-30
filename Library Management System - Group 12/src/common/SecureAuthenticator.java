@@ -66,5 +66,30 @@ public class SecureAuthenticator {
 		}
 		return false;
 	}
+	
+	public boolean verifyAdmin(String username, String pwd) {
+		if(user_data.userExists(username)) {
+		//	byte[] user_salt = user_data.getSalt(username);
+		//	byte[] user_hash = user_data.getHash(username);
+			int type = user_data.getAccountType(username);
+			
+			if(type != 0) {
+				if(type == 2) {
+					return true;
+				}
+			}
+			
+		//	byte[] entered_hash = CryptoUtilities.sha2_hash(CryptoUtilities.Concatenate(user_salt, pwd.getBytes()));
+			
+		//	if(Arrays.equals(user_hash, entered_hash)) {
+		///		return true;
+			//}
+			//else {
+		//		return false;
+	//		}
+			
+		}
+		return false;
+	}
 
 }
