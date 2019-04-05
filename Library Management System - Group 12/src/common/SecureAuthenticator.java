@@ -67,6 +67,18 @@ public class SecureAuthenticator {
 		return false;
 	}
 	
+
+	public boolean verifyLib(String username, String pwd) {
+		if(user_data.userExists(username)) {
+			int type = user_data.getAccountType(username);
+			/* Type = 3 for Librarian */
+			if (type == 3) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public boolean verifyAdmin(String username, String pwd) {
 		if(user_data.userExists(username)) {
 		//	byte[] user_salt = user_data.getSalt(username);

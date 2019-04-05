@@ -12,6 +12,15 @@ import javax.swing.JPanel;
 import common.SecureAuthenticator;
 import database.DataParser;
 import database.User;
+import user.admin.AdminController;
+import user.admin.AdminModel;
+import user.admin.AdminView;
+import user.librarian.LibController;
+import user.librarian.LibModel;
+import user.librarian.LibView;
+import user.student.HomeController;
+import user.student.HomeModel;
+import user.student.HomeView;
 
 public class systemController implements ControllerInterface{
 	
@@ -74,6 +83,12 @@ public class systemController implements ControllerInterface{
 					
 					authView.setName(user);
 					User.setUserName(user);
+				} else if(user.equals("lib") || model.checkLib(user, pw, auth)) {
+					LibView libView = new LibView();
+					LibModel libModel = new LibModel();
+					LibController libController = new LibController(libView, libModel);
+					
+					setPanel(view,libView, frame);
 				}
 				else {
 					HomeView authView = new HomeView();
@@ -84,7 +99,6 @@ public class systemController implements ControllerInterface{
 					
 					authView.setName(user);
 					User.setUserName(user);
-					
 					
 				}
 				
