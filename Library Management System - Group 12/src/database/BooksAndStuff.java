@@ -15,8 +15,7 @@ public class BooksAndStuff {
 	int total;
 
 	DataParser data = new DataParser();
-	
-	
+
 	
 	public  boolean findBook(String name) {
 		String q = String.format("SELECT * FROM books_and_others WHERE name = '" + name + "'"); 

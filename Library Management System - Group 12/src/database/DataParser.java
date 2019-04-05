@@ -39,7 +39,8 @@ public class DataParser{
         }
     }
 
-    /**
+   
+	/**
     * Performs query based on string from user
     */
     public ResultSet performQuery(String query){
@@ -107,7 +108,7 @@ public class DataParser{
            connected = false;
         }
     }
-    
+        
     /**
      * 
      * @param type
@@ -195,6 +196,44 @@ public class DataParser{
     		ex.printStackTrace();
             connected = false;
             return false;
+    	}
+    }
+    
+    public ResultSet queryBorrowed() {
+    	try {
+    		String query = "select username, borrowed_id, date_borrowed, isbn from borrowed";
+    		System.out.println("Query being performed is " + query);
+    		return state.executeQuery(query);
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+    	return null;
+    }
+    
+    public double findPrice(int ISBN) {
+    	try {
+    		String query = "select price from books_and_others right join borrowed on borrowed.isbn = books_and_others.id and books_and_others.id = " + ISBN;
+    		System.out.println("Query being performed is " + query);
+    		ResultSet price = state.executeQuery(query);
+    		if (price.next()) {
+        		return price.getDouble(1);
+    		}
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+		return 0.00;
+    }
+    
+    public void executeAddFee(double fee, String user) {
+    	try {
+    		String query = "update users_and_passwords set balance = balance + " + fee + " where username ='"+user+"'";
+    		System.out.println("Query being performed is " + query);
+    		state.executeUpdate(query);
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
     	}
     }
 }

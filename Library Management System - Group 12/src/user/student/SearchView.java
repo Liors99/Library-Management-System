@@ -189,7 +189,7 @@ public class SearchView extends JPanel {
 		        	}
 		        }
 		    });
-
+	
 	}
 	
 	/**
