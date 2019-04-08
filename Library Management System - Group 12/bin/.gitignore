@@ -1,4 +1,5 @@
-/run.class
-/user/
+/common/
 /mvc/
+/user/
+/view/
 /database/

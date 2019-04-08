@@ -91,9 +91,9 @@ public class systemController implements ControllerInterface{
 					setPanel(view,libView, frame);
 				}
 				else {
-					HomeView authView = new HomeView();
+					HomeView authView = new HomeView(user);
 					HomeModel authModel = new HomeModel();
-					HomeController authCont= new HomeController(authView, authModel,frame);
+					HomeController authCont= new HomeController(authView, authModel,frame, user);
 					
 					setPanel(view, authView, frame);
 					

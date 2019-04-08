@@ -14,19 +14,22 @@ public class HomeController implements ControllerInterface{
 	private HomeView view;
 	private HomeModel model;
 	private MainFrame frame;
+	private String user;
 	/**
 	 * Constructor for the controller
 	 * @param view - the Home view (studen't view)
 	 * @param model - the model (student's model)
 	 */
-	public HomeController(HomeView view, HomeModel model, MainFrame frame) {
+	public HomeController(HomeView view, HomeModel model, MainFrame frame, String user) {
 		this.frame=frame;
 		this.view=view;
 		this.model=model;
+		this.user = user;
 		view.addBorrowListener(new BorrowListener());
 		view.addShopListener(new ShopListener());
 		view.addAccountListener(new AccountListener());
 		view.addLogoutListener(new LogoutListener());
+		
 		
 	}
 
@@ -50,7 +53,7 @@ public class HomeController implements ControllerInterface{
 			view.switchToAccount();
 			AccountView accView = view.getView();
 			AccountModel accModel = new AccountModel();
-			AccountController accCtrl = new AccountController(accView, accModel);
+			AccountController accCtrl = new AccountController(accView, accModel, user);
 			
 		}
 	}

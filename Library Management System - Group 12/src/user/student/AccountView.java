@@ -2,6 +2,9 @@ package user.student;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import database.DataParser;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +17,11 @@ public class AccountView extends JPanel{
 	private JLabel lblFundVar;
 	private JButton btnAddFunds;
 	private JTextField addFundsTF;
+	private String user;
+	DataParser db = new DataParser();
 	
-	AccountView() {
+	AccountView(String user) {
+		this.user = user;
 		setBackground(new Color(255, 255, 255));
 		this.setBounds(155, 62, 835, 457);
 		
@@ -96,16 +102,28 @@ public class AccountView extends JPanel{
 					.addContainerGap(107, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
-
+		setFundLabel();
+		setFeeLabel();
 	}
 	
+	public void setFundLabel() {
+		double funds = db.queryGetFunds(user);
+		lblFundVar.setText(Double.toString(funds));
+	}
 	
-	public int getAddedFunds() {
-		return Integer.parseInt(addFundsTF.getText());
+	public void setFeeLabel() {
+		double fees = db.queryGetFees(user);
+		lblFeeVar.setText(Double.toString(fees));
+	}
+	
+	public double getAddedFunds() {
+		return Double.parseDouble(addFundsTF.getText());
 	}
 	
 	void addFundListener(ActionListener listenForFunds) {
 		
 		btnAddFunds.addActionListener(listenForFunds);
+		
+		/* Update funds too */
 	}
 }

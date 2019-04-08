@@ -32,9 +32,9 @@ public class HomeView extends JPanel {
 	private JButton btnAccountInfo;
 	private AccountView acc;
 	private JButton btnLogout;
-	
-	public HomeView() {
-		
+	private String user;
+	public HomeView(String user) {
+		this.user = user;
 		JPanel menuBar = new JPanel();
 		menuBar.setBounds(10, 62, 140, 457);
 		menuBar.setBackground(Color.LIGHT_GRAY);
@@ -100,7 +100,7 @@ public class HomeView extends JPanel {
 				
 		borrow = new SearchView();
 		shop = new ShopView();
-		acc = new AccountView();
+		acc = new AccountView(user);
 		
 		defaultcard = new JPanel();
 		defaultcard.setBackground(new Color(255, 255, 255));
