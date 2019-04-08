@@ -73,7 +73,7 @@ public class systemController implements ControllerInterface{
 				if(user.equals("admin") || model.checkAdmin(user, pw, auth)) {
 					AdminView authView = new AdminView();
 					AdminModel authModel = new AdminModel();
-					AdminController authCont = new AdminController(authView, authModel);
+					AdminController authCont = new AdminController(authView, authModel, frame);
 					
 					setPanel(view, authView, frame);
 					
@@ -98,14 +98,16 @@ public class systemController implements ControllerInterface{
 					setPanel(view,libView, frame);
 				}
 				else {
+					
+					current_user.setCurrentUserName(user);
 					HomeView authView = new HomeView();
 					HomeModel authModel = new HomeModel();
 					HomeController authCont= new HomeController(authView, authModel,frame);
 					
+					authView.setName(user);
 					setPanel(view, authView, frame);
 					
-					authView.setName(user);
-					current_user.setCurrentUserName(user);
+					
 					
 					
 				}

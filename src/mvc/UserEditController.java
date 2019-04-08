@@ -9,6 +9,8 @@ public class UserEditController implements ControllerInterface{
 	
 	private UserEditView view;
 	private UserEditModel model;
+	private String edit_username;
+	private AdminView admin_view;
 	DataParser data = new DataParser();
 	
 	/**
@@ -16,11 +18,13 @@ public class UserEditController implements ControllerInterface{
 	 * @param view
 	 * @param model
 	 */
-	public UserEditController(UserEditView view, UserEditModel model, String username) {
+	public UserEditController(UserEditView view, UserEditModel model, String name, AdminView admin_view) {
 		this.view=view;
 		this.model=model;
+		this.edit_username=name;
+		this.admin_view=admin_view;
 		
-		view.setUsername(username);
+		view.setUsername(current_user.getCurrentUserName());
 		view.addBackListener(new backToSearchListener());
 		
 		view.addEditUserListener(new EditListener());
@@ -43,13 +47,16 @@ public class UserEditController implements ControllerInterface{
 				data.performUpdate("UPDATE users_and_passwords SET accountType = 2 WHERE username = '" + view.getUsername() + "'");
 			}
 
+			admin_view.initTable();
 		}
 	}
 	
 	/* Removes a user */
 	class RemoveListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			data.performDelete("DELETE FROM users_and_passwords WHERE username = '" + view.getUsername() + "'");
+			data.performDelete("DELETE FROM users_and_passwords WHERE username = '" + edit_username + "'");
+			admin_view.initTable();
+			view.frame.dispose();
 		}
 	}
 

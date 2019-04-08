@@ -18,18 +18,24 @@ public class AccountController implements ControllerInterface{
 	
 	public AccountController(AccountView view, AccountModel model) {
 	
-		view.addFundListener(new FundListener());
+		
 		this.view = view;
 		this.model = model;
 	
 		
-		String[] book_dates= current_user.getAllRentalDates(current_user.getCurrentUserName());
+		String current_name = current_user.getCurrentUserName();
+		String[] book_dates= current_user.getAllRentalDates(current_name);
 		int charge=model.calcTotalCharge(book_dates);
 		
 		System.out.println("Total user charge: " + charge);
 		view.setFeesDisplay(charge);
-		view.clearTable();
-		view.initTable(current_user.getAllRentals(current_user.getCurrentUserName()), book_dates);
+		view.initTable(current_user.getAllRentals(current_name), book_dates);
+		view.addFundListener(new FundListener());
+		
+		view.setName(current_name);
+		view.setFaculty(current_user.getFaculty(current_name));
+		view.setID(current_user.getID(current_name));
+		view.setFullName(current_user.getName(current_name));
 		
 		
 		

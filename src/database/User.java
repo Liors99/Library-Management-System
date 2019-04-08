@@ -2,9 +2,9 @@ package database;
 import java.sql.*;
 
 public class User {
-	static DataParser data;
-	static String current_username;
-	static int id;
+	private static DataParser data;
+	private static String current_username;
+	
 
 	public User(DataParser d) {
 		data = d;
@@ -78,7 +78,7 @@ public class User {
 		}
 	}
 	
-	public int getAccountType(String user) {
+	public static int getAccountType(String user) {
 		String q = String.format("SELECT * FROM users_and_passwords WHERE username = '" + user + "'");
 		ResultSet r = data.performQuery(q);
 		try {
@@ -190,5 +190,116 @@ public class User {
 	public static void setCurrentUserName(String usernm) {
 		current_username = usernm;
 	}
+	
+	//User stuff
+		public static int getFunds(String username) {
+			ResultSet r = User.getData().performQuery("SELECT balance FROM users_and_passwords WHERE username = '" + username + "'");
+				
+			int i = 0;
+	    	try {
+				r.next();
+				i = r.getInt("balance");
+				
+			}
+				catch(SQLException ex) {
+				
+			}
+	    	return i;
+		}
+		public static int getFees(String username) {
+			ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+				
+	    	int i = 0;
+	    	try {
+				r.next();
+				i = r.getInt("fees");
+				
+			}
+				catch(SQLException ex) {
+				
+			}
+	    	return i;
+		}
+		
+		public static String getFaculty(String username) {
+			ResultSet r = User.getData().performQuery("SELECT faculty FROM users_and_passwords WHERE username = '" + username + "'");
+				
+	    	//int i = 0;
+			String i = "";
+	    	try {
+				r.next();
+				i = r.getString("faculty");
+				
+			}
+				catch(SQLException ex) {
+				
+			}
+	    	return i;
+		}
+		
+		public static void setFees(String username, int value) {
+			ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+			data.performInsert("UPDATE users_and_passwords SET fees = " + value + " WHERE username = '" + username + "'");
+
+		}
+		
+		public static void setFunds(String username, int value) {
+			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+			data.performInsert("UPDATE users_and_passwords SET balance = " + value + " WHERE username = '" + username + "'");	
+
+		}
+		
+		public static void setFaculty(String username, String faculty) {
+			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+			data.performInsert("UPDATE users_and_passwords SET faculty = '" + faculty + "' WHERE username = '" + username + "'");	
+
+		}
+		
+		public static void setName(String username, String name) {
+			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+			data.performInsert("UPDATE users_and_passwords SET name = '" + name + "' WHERE username = '" + username + "'");	
+
+
+		}
+		
+	    
+	    public static String getName(String username) {
+			ResultSet r = User.getData().performQuery("SELECT name FROM users_and_passwords WHERE username = '" + username + "'");
+			String i = "";
+	    	try {
+				r.next();
+				i = r.getString("name");
+				
+			}
+				catch(SQLException ex) {
+				
+			}
+	    	return i;
+		}
+		
+	    public static void setID(String username, String value) {
+			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+			data.performInsert("UPDATE users_and_passwords SET ID = " + value + " WHERE username = '" + username + "'");	
+
+
+		}
+		
+	    
+	   
+		public static String getID(String username) {
+			ResultSet r = User.getData().performQuery("SELECT ID FROM users_and_passwords WHERE username = '" + username + "'");
+				
+	    	String i = "";
+	    	try {
+				r.next();
+				i = r.getString("ID");
+				
+			}
+				catch(SQLException ex) {
+				
+			}
+	    	return i;
+		}
+	
 	
 }

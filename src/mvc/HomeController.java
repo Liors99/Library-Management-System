@@ -22,6 +22,11 @@ public class HomeController implements ControllerInterface{
 		view.addAccountListener(new AccountListener());
 		view.addLogoutListener(new LogoutListener());
 		
+		view.switchToAccount();
+		AccountView accView = view.getView();
+		AccountModel accModel = new AccountModel();
+		AccountController accCtrl = new AccountController(accView, accModel);
+		
 	}
 
 	/* Switches cards in view to borrow */

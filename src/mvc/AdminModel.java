@@ -34,17 +34,4 @@ public class AdminModel{
         
         return lst;
     }
-	
-	
-	/*
-	 * Initialize the table for the admin
-	 */
-	public void initTable(DefaultTableModel tableModel, ArrayList<String> all_users) {
-		System.out.println(all_users);
-		for(int i=0; i< all_users.size(); i++) {
-			Object[] objs = {all_users.get(i)};
-			tableModel.addRow(objs);
-		}
-		
-	}
 }

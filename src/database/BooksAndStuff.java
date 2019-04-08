@@ -73,6 +73,71 @@ public class BooksAndStuff {
 		
 	}
 	
+//  Book Stuff
+	public static int getReservedTotal(String name) {
+		ResultSet r = User.getData().performQuery("SELECT reservedTotal FROM books_and_others WHERE name = '" + name + "'");
+			
+  	int i = 0;
+  	try {
+			r.next();
+			i = r.getInt("reservedTotal");
+			
+		}
+			catch(SQLException ex) {
+			
+		}
+  	return i;
+	}
+	
+	
+	public static int getReservedOut(String name) {
+		ResultSet r = User.getData().performQuery("SELECT reservedBorrowed FROM books_and_others WHERE name = '" + name + "'");
+			
+  	int i = 0;
+  	try {
+			r.next();
+			i = r.getInt("reservedBorrowed");
+			
+		}
+			catch(SQLException ex) {
+			
+		}
+  	return i;
+	}
+	
+	public static String getFaculty(String name) {
+		ResultSet r = User.getData().performQuery("SELECT reservingFaculty FROM books_and_others WHERE name = '" + name + "'");
+		
+  	String i = "";
+  	try {
+			r.next();
+			i = r.getString("reservingFaculty");
+			
+			
+		}
+			catch(SQLException ex) {
+			
+		}
+  	return i;
+	}
+	
+	public static void setReservedTotal(String name, int value) {
+		
+			//ResultSet r = User.getData().performQuery("SELECT reservedTotal FROM books_and_others WHERE name = '" + name + "'");
+			User.getData().performInsert("UPDATE books_and_others SET reservedTotal = " + value + " WHERE name = '" + name + "'");	
+	}
+	
+	public static void setReservedOut(String name, int value) {
+		
+		//ResultSet r = User.getData().performQuery("SELECT reservedTotal FROM books_and_others WHERE name = '" + name + "'");
+		User.getData().performInsert("UPDATE books_and_others SET reservedBorrowed = " + value + " WHERE name = '" + name + "'");	
+	}
+	
+	public static void setFaculty(String name, String faculty) {
+		//ResultSet r = User.getData().performQuery("SELECT reservedTotal FROM books_and_others WHERE name = '" + name + "'");
+		User.getData().performInsert("UPDATE books_and_others SET reservingFaculty = /" + faculty + "' WHERE name = '" + name + "'");	
+	}
+	
 	
 	public String getName() {
 		return name;

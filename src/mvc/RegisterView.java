@@ -42,6 +42,7 @@ public class RegisterView extends JPanel {
 	private JTextField textName;
 	private JTextField textLastName;
 	private JTextField textID;
+	private JComboBox Faculty_comboBox;
 	private final JPasswordField textConfirmPass = new JPasswordField();
 	
 	
@@ -49,21 +50,21 @@ public class RegisterView extends JPanel {
 	
 		
 		this.setSize(1041, 536);
-		lblLoginHere.setBounds(502, 499, 93, 14);
+		lblLoginHere.setBounds(491, 500, 93, 14);
 		lblLoginHere.setForeground(Color.BLUE);
-		lblConfirmPassword.setBounds(382, 432, 139, 22);
+		lblConfirmPassword.setBounds(382, 407, 139, 22);
 		lblConfirmPassword.setForeground(new Color(0, 191, 255));
 		lblConfirmPassword.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-		lblUtid.setBounds(382, 267, 139, 22);
+		lblUtid.setBounds(382, 254, 139, 22);
 		lblUtid.setForeground(new Color(0, 191, 255));
 		lblUtid.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-		lblLastName.setBounds(382, 333, 139, 22);
+		lblLastName.setBounds(382, 316, 139, 22);
 		lblLastName.setForeground(new Color(0, 191, 255));
 		lblLastName.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-		lblFirstName.setBounds(382, 300, 139, 22);
+		lblFirstName.setBounds(382, 285, 139, 22);
 		lblFirstName.setForeground(new Color(0, 191, 255));
 		lblFirstName.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-		btnRegister.setBounds(490, 465, 93, 23);
+		btnRegister.setBounds(481, 471, 93, 23);
 		btnRegister.setBackground(Color.LIGHT_GRAY);
 		btnRegister.setForeground(new Color(0, 0, 0));
 		btnRegister.setFont(new Font("Segoe UI", Font.BOLD, 11));
@@ -71,22 +72,22 @@ public class RegisterView extends JPanel {
 		lblOfToronto.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 67));
 		panel.setBounds(0, 5, 1028, 242);
 		panel.setBackground(new Color(112, 128, 144));
-		pwLabel.setBounds(382, 399, 139, 22);
+		pwLabel.setBounds(382, 378, 139, 22);
 		pwLabel.setForeground(new Color(0, 191, 255));
 		pwLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-		userLabel.setBounds(382, 366, 139, 22);
+		userLabel.setBounds(382, 349, 139, 22);
 		userLabel.setForeground(new Color(0, 191, 255));
 		userLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
 		
 		
 		textName = new JTextField(10);
-		textName.setBounds(544, 304, 156, 20);
+		textName.setBounds(544, 285, 156, 20);
 		
 		textLastName = new JTextField(10);
-		textLastName.setBounds(544, 335, 156, 20);
+		textLastName.setBounds(544, 316, 156, 20);
 		
 		textID = new JTextField(10);
-		textID.setBounds(544, 271, 156, 20);
+		textID.setBounds(544, 254, 156, 20);
 		setLayout(null);
 		lblUNIVERSITY.setForeground(new Color(0, 191, 255));
 		lblUNIVERSITY.setFont(new Font("Segoe UI Black", Font.PLAIN, 71));
@@ -110,13 +111,13 @@ public class RegisterView extends JPanel {
 		);
 		panel.setLayout(gl_panel);
 		add(userLabel);
-		textUsername.setBounds(544, 370, 156, 20);
+		textUsername.setBounds(544, 349, 156, 20);
 		add(textUsername);
 		add(pwLabel);
-		textPW.setBounds(544, 401, 156, 20);
+		textPW.setBounds(544, 380, 156, 20);
 		add(textPW);
 		add(lblConfirmPassword);
-		textConfirmPass.setBounds(544, 432, 156, 20);
+		textConfirmPass.setBounds(544, 411, 156, 20);
 		add(textConfirmPass);
 		add(btnRegister);
 		add(lblLoginHere);
@@ -135,6 +136,17 @@ public class RegisterView extends JPanel {
 		all_fields.add(textID);
 		all_fields.add(textPW);
 		all_fields.add(textConfirmPass);
+		
+		String[] Faculty_Strings = {"Science", "Arts", "Engineering", "Business"};
+		Faculty_comboBox = new JComboBox(Faculty_Strings);
+		Faculty_comboBox.setBounds(544, 442, 156, 20);
+		add(Faculty_comboBox);
+		
+		JLabel lblFaculty = new JLabel("Faculty:");
+		lblFaculty.setForeground(new Color(0, 191, 255));
+		lblFaculty.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
+		lblFaculty.setBounds(382, 438, 139, 22);
+		add(lblFaculty);
 		
 		this.setVisible(true);
 	}
@@ -164,6 +176,18 @@ public class RegisterView extends JPanel {
 	
 	public void setFalse() {
 		this.setVisible(false);
+	}
+	
+	public String GetFaculty() {
+		return (String) Faculty_comboBox.getSelectedItem();
+	}
+	
+	public String getID() {
+		return this.textID.getText();
+	}
+	
+	public String getFullName() {
+		return this.textName.getText()+" "+this.textLastName.getText();
 	}
 	
 	

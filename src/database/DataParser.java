@@ -265,5 +265,46 @@ public class DataParser{
     		connected = false;
     	}
     }
+    
+    public void executeUpdateFunds(double funds, String user) {
+    	try {
+    		String query = "update users_and_passwords set funds = funds + " + funds + " where username ='"+user+"'";
+    		System.out.println("Query being performed is " + query);
+    		state.executeUpdate(query);
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+    }
+
+    public double queryGetFunds(String user) {
+    	try {
+    		String query = "select funds from users_and_passwords where username ='"+user+"'";
+    		System.out.println("Query being performed is " + query);
+    		ResultSet extractedFunds = state.executeQuery(query);
+    		extractedFunds.next();
+    		return extractedFunds.getDouble("funds");
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+		return 0;
+    }
+
+    public double queryGetFees(String user) {
+    	try {
+    		String query = "select fees from users_and_passwords where username ='"+user+"'";
+    		System.out.println("Query being performed is " + query);
+    		ResultSet extractedFees = state.executeQuery(query);
+    		extractedFees.next();
+
+    		return extractedFees.getDouble("fees");
+
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+		return 0;
+    }
 }
 

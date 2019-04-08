@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import database.User;
+
 public class RegisterController implements ControllerInterface{
 	
 	private RegisterView view;
@@ -35,6 +37,7 @@ public class RegisterController implements ControllerInterface{
 			String user = view.getUser();
 			String pw = view.getPW();
 			String pw_confirm= view.getPWconfirm();
+			String user_faculty = view.GetFaculty();
 			
 			
 			
@@ -56,6 +59,10 @@ public class RegisterController implements ControllerInterface{
 			if(pw.equals(pw_confirm)) {
 				if (auth.Store(user, pw)) {
 					JOptionPane.showMessageDialog(view, "User successfully registered");
+					
+					User.setFaculty(user, user_faculty);
+					User.setID(user, view.getID());
+					User.setName(user, view.getFullName());
 					
 					
 					LoginView log_view= new LoginView();

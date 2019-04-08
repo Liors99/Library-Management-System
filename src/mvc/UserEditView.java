@@ -192,6 +192,11 @@ public class UserEditView {
 		return this.username;
 	}
 	
+	
+	public void setID(String ID) {
+		this.lbl_ID.setText(ID);
+	}
+	
 	public String GetRankValue() {
 		return (String) rankComboBox.getSelectedItem();
 	}
