@@ -25,7 +25,6 @@ public class AdminModel{
 		try {
 			while(r.next() ) {
 				lst.add( r.getString("username"));// + "  DATE RENTED: " + r.getString("dateRented")); 
-				System.out.println(lst.get(i));
 				i++;
 			}
 		}

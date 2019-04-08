@@ -54,7 +54,7 @@ public class DataParser{
     public ResultSet performQuery(String query){
         try{
             if(validateQuery(query)){
-                System.out.println("Query being performed is " + query);
+                //System.out.println("Query being performed is " + query);
                 ResultSet result = state.executeQuery(query);
                 return result;
             }
@@ -152,7 +152,7 @@ public class DataParser{
        try{
            String query  = "";
            query = "select * from users_and_passwords where username like \"%" + term + "%\";";
-           System.out.println("Query being performed is " + query);
+           //System.out.println("Query being performed is " + query);
            return state.executeQuery(query);
        }
        catch(SQLException ex) {

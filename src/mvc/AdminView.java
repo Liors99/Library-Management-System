@@ -181,15 +181,15 @@ public class AdminView extends JPanel {
 				String username = r.getString("username");
 				String ID=User.getID(username);
 				String name= User.getName(username);
-				String Rank="Student";
-				switch(User.getAccountType(name)) {
+				String Rank="TEST";
+				switch(User.getAccountType(username)) {
 					case 0:
 						Rank= "Student";
 						break;
-					case 1:
+					case 2:
 						Rank="Admin";
 						break;
-					case 2:
+					case 1:
 						Rank="Librarian";
 						break;
 					default:

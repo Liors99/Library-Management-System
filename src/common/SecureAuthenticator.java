@@ -85,7 +85,7 @@ public class SecureAuthenticator {
 		if(user_data.userExists(username)) {
 			int type = user_data.getAccountType(username);
 			/* Type = 3 for Librarian */
-			if (type == 3) {
+			if (type == 1) {
 				return true;
 			}
 		}

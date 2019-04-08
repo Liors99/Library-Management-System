@@ -28,7 +28,7 @@ public class LoginModel{
 	}
 	
 	public boolean checkLib(String user, String pw, SecureAuthenticator auth) {
-		return auth.verifyAdmin(user, pw);
+		return auth.verifyLib(user, pw);
 	}
 	
 	public boolean getAuthentication() {

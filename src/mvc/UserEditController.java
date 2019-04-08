@@ -38,13 +38,13 @@ public class UserEditController implements ControllerInterface{
 	class EditListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			if(view.GetRankValue().equals("Student")) {
-				data.performUpdate("UPDATE users_and_passwords SET accountType = 0 WHERE username = '" + view.getUsername() + "'");
+				data.performUpdate("UPDATE users_and_passwords SET accountType = 0 WHERE username = '" + edit_username + "'");
 			}
 			if(view.GetRankValue().equals("Librarian")) {
-				data.performUpdate("UPDATE users_and_passwords SET accountType = 1 WHERE username = '" + view.getUsername() + "'");
+				data.performUpdate("UPDATE users_and_passwords SET accountType = 1 WHERE username = '" + edit_username + "'");
 			}
 			if(view.GetRankValue().equals("Admin")) {
-				data.performUpdate("UPDATE users_and_passwords SET accountType = 2 WHERE username = '" + view.getUsername() + "'");
+				data.performUpdate("UPDATE users_and_passwords SET accountType = 2 WHERE username = '" + edit_username+ "'");
 			}
 
 			admin_view.initTable();
