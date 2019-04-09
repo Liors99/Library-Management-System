@@ -201,7 +201,7 @@ public class DataParser{
     
     public ResultSet queryBorrowed() {
     	try {
-    		String query = "select username, borrowed_id, date_borrowed, isbn from borrowed";
+    		String query = "select userRenter, itemRented, dateRented, dateReturned from rentalObj where dateReturned is not null";
     		System.out.println("Query being performed is " + query);
     		return state.executeQuery(query);
     	} catch (SQLException ex) {
@@ -213,7 +213,7 @@ public class DataParser{
     
     public double findPrice(int ISBN) {
     	try {
-    		String query = "select price from books_and_others right join borrowed on borrowed.isbn = books_and_others.id and books_and_others.id = " + ISBN;
+    		String query = "select price from books_and_others inner join rentalObj on rentalObj.itemRented = books_and_others.id and books_and_others.id = " + ISBN;
     		System.out.println("Query being performed is " + query);
     		ResultSet price = state.executeQuery(query);
     		if (price.next()) {
@@ -265,12 +265,12 @@ public class DataParser{
     
     public double queryGetFees(String user) {
     	try {
-    		String query = "select fees from users_and_passwords where username ='"+user+"'";
+    		String query = "select balance from users_and_passwords where username ='"+user+"'";
     		System.out.println("Query being performed is " + query);
     		ResultSet extractedFees = state.executeQuery(query);
     		extractedFees.next();
 
-    		return extractedFees.getDouble("fees");
+    		return extractedFees.getDouble("balance");
     		
     	} catch (SQLException ex) {
     		ex.printStackTrace();
@@ -278,5 +278,17 @@ public class DataParser{
     	}
 		return 0;
     }
+    
+    public void validateReturn(String user, int isbn, String returnDate) {
+    	try {
+    		String query = "delete from rentalObj where userRenter='"+user+"' and itemRented='"+isbn+"' and dateReturned='"+returnDate+"'";
+    		System.out.println("Query being performed is " + query);
+    		state.executeUpdate(query);    		
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+    }
+    
 }
 
