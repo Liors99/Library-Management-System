@@ -57,6 +57,7 @@ public class UserEditView {
 	private JLabel lbl_ID;
 	private JLabel lblPriv;
 	private JLabel lbl_books;
+	private JRadioButton rdbtnClearFee;
 
 	
 
@@ -148,8 +149,8 @@ public class UserEditView {
 		panel.add(lblNewLabel_2);
 		panel.add(lblNewLabel);
 		
-		JRadioButton rdbtnClearFee = new JRadioButton("");
-		rdbtnClearFee.setBounds(162, 251, 21, 21);
+		rdbtnClearFee = new JRadioButton("");
+		rdbtnClearFee.setBounds(191, 251, 21, 21);
 		panel.add(rdbtnClearFee);
 		
 		btnDeleteUser = new JButton("Delete User");
@@ -158,7 +159,7 @@ public class UserEditView {
 		panel.add(btnDeleteUser);
 		
 		JLabel lblClearFees = new JLabel("Clear fees:");
-		lblClearFees.setBounds(95, 251, 61, 21);
+		lblClearFees.setBounds(105, 251, 78, 21);
 		panel.add(lblClearFees);
 		
 		lblName = new JLabel("");
@@ -210,5 +211,9 @@ public class UserEditView {
 	}
 	public void addBackListener(ActionListener e) {
 		btnBackToSearch.addActionListener(e);
+	}
+	
+	public void addFeeListener(ActionListener e) {
+		rdbtnClearFee.addActionListener(e);
 	}
 }

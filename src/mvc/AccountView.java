@@ -17,7 +17,6 @@ import java.awt.Color;
 public class AccountView extends JPanel{
 
 	private JLabel lblFeeVar;
-	private JLabel lblFundVar;
 	private JButton btnAddFunds;
 	private JTextField addFundsTF;
 	private JTable tableItems;
@@ -45,10 +44,6 @@ public class AccountView extends JPanel{
 		lblOutstandingFees.setForeground(new Color(0, 191, 255));
 		lblOutstandingFees.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
 		
-		JLabel lblFunds = new JLabel("funds:");
-		lblFunds.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
-		lblFunds.setForeground(new Color(0, 191, 255));
-		
 		btnAddFunds = new JButton("add funds");
 		btnAddFunds.setForeground(new Color(0, 191, 255));
 		btnAddFunds.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
@@ -57,12 +52,6 @@ public class AccountView extends JPanel{
 		
 		lblFeeVar = new JLabel("you currently do not have any fees.");
 		lblFeeVar.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
-		
-		lblFundVar = new JLabel("0.00");
-		lblFundVar.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
-		
-		JLabel lbl$ = new JLabel("$");
-		lbl$.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
 		
 		addFundsTF = new JTextField();
 		addFundsTF.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 11));
@@ -132,14 +121,7 @@ public class AccountView extends JPanel{
 											.addComponent(lblName_insert, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
 						.addComponent(lblBorrowed)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblOutstandingFees)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblFunds)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lbl$)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblFundVar)))
+							.addComponent(lblOutstandingFees)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
@@ -164,9 +146,6 @@ public class AccountView extends JPanel{
 								.addComponent(lblFeeVar))
 							.addGap(47)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblFunds)
-								.addComponent(lblFundVar)
-								.addComponent(lbl$)
 								.addComponent(btnAddFunds, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 								.addComponent(addFundsTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()

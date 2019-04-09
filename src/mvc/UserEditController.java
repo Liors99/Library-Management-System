@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import database.DataParser;
+import database.User;
 
 public class UserEditController implements ControllerInterface{
 	
@@ -24,11 +25,12 @@ public class UserEditController implements ControllerInterface{
 		this.edit_username=name;
 		this.admin_view=admin_view;
 		
-		view.setUsername(current_user.getCurrentUserName());
+		//view.setUsername(current_user.getCurrentUserName());
 		view.addBackListener(new backToSearchListener());
 		
 		view.addEditUserListener(new EditListener());
 		view.addUserRemoveListener(new RemoveListener());
+		view.addFeeListener(new FeeListener());
 		
 	}
 	
@@ -69,5 +71,15 @@ public class UserEditController implements ControllerInterface{
 		}
 	
 	}
+	
+	/* Removes a user */
+	class FeeListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println(edit_username);
+			User.setFunds(edit_username, 0);
+		}
+	}
+	
+	
 
 }

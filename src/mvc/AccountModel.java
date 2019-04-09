@@ -7,14 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 public class AccountModel{
 	
-	private int CHARGE_PER_DAY=20; 
+	private int CHARGE_PER_WEEK=10; 
 
-	public void addFunds(int amount) {
-		/* Implement */
-		System.out.printf("Added $%d into your account\n", amount);
-		
-	}
-	
 	public int calcTotalCharge(String[] dates) {
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
 		Date current_date= new Date();
@@ -32,7 +26,7 @@ public class AccountModel{
 					System.out.println(days);
 					
 					if(days>7) {
-						total_charge+= (days-8)*CHARGE_PER_DAY;
+						total_charge+= (days/7)*CHARGE_PER_WEEK;
 					}
 				}
 			} catch (ParseException e) {

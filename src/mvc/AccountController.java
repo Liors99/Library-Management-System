@@ -15,15 +15,16 @@ public class AccountController implements ControllerInterface{
 
 	private AccountView view;
 	private AccountModel model;
+	private String current_name;
 	
-	public AccountController(AccountView view, AccountModel model) {
+	public AccountController(AccountView view, AccountModel model, boolean first_time) {
 	
 		
 		this.view = view;
 		this.model = model;
 	
 		
-		String current_name = current_user.getCurrentUserName();
+		current_name = current_user.getCurrentUserName();
 		String[] book_dates= current_user.getAllRentalDates(current_name);
 		int charge=model.calcTotalCharge(book_dates);
 		
@@ -37,19 +38,25 @@ public class AccountController implements ControllerInterface{
 		view.setID(current_user.getID(current_name));
 		view.setFullName(current_user.getName(current_name));
 		
+		if(first_time) {
+			int late_fees= model.calcTotalCharge(current_user.getAllRentalDates(current_name));
+			int current_balance= User.getFunds(current_name);
+			User.setFunds(current_name, current_balance - late_fees);
+		}
 		
+		view.setFeesDisplay(User.getFunds(current_name));
 		
 	}
 	
 	/* Adding fees into an account */
 	class FundListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			//view.get
-			//System.out.println("testing funds");
-			model.addFunds(view.getAddedFunds());
-			//System.out.printf("Adding $%d into your account", view.getAddedFunds());
+			//model.addFunds(view.getAddedFunds());
 			JOptionPane.showMessageDialog(view, "Added $" + view.getAddedFunds() + " to your account");
-
+			int added_funds= view.getAddedFunds();
+			User.setFunds(current_name, added_funds + User.getFunds(current_name));
+			view.setFeesDisplay(User.getFunds(current_name));
+			
 		}
 	}
 	

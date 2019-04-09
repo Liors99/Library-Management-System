@@ -25,7 +25,7 @@ public class HomeController implements ControllerInterface{
 		view.switchToAccount();
 		AccountView accView = view.getView();
 		AccountModel accModel = new AccountModel();
-		AccountController accCtrl = new AccountController(accView, accModel);
+		AccountController accCtrl = new AccountController(accView, accModel, true);
 		
 	}
 
@@ -49,7 +49,7 @@ public class HomeController implements ControllerInterface{
 			view.switchToAccount();
 			AccountView accView = view.getView();
 			AccountModel accModel = new AccountModel();
-			AccountController accCtrl = new AccountController(accView, accModel);
+			AccountController accCtrl = new AccountController(accView, accModel, false);
 			
 		}
 	}
