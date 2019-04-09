@@ -48,6 +48,9 @@ public class UserEditController implements ControllerInterface{
 			if(view.GetRankValue().equals("Admin")) {
 				data.performUpdate("UPDATE users_and_passwords SET accountType = 2 WHERE username = '" + edit_username+ "'");
 			}
+			if(view.GetRankValue().equals("Faculty")) {
+				data.performUpdate("UPDATE users_and_passwords SET accountType = 4 WHERE username = '" + edit_username+ "'");
+			}
 
 			admin_view.initTable();
 		}
