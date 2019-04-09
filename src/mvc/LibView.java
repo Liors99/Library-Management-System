@@ -1,4 +1,4 @@
-package user.librarian;
+package mvc;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,12 +18,6 @@ import javax.swing.table.DefaultTableModel;
 
 import database.BooksAndStuff;
 import database.DataParser;
-import user.student.AccountView;
-import user.student.BookController;
-import user.student.BookModel;
-import user.student.Book_view;
-import user.student.SearchView;
-import user.student.ShopView;
 
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -43,17 +37,17 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 public class LibView extends JPanel {
-	
+
 
 	DataParser db = new DataParser();
 	JTable borrowedTable;
-	private String[] columnNames = {"Name", "ID", "Date Returned", "ISBN"};
+	private String[] columnNames = {"Name", "ID", "Date Borrowed", "ISBN"};
 
 	public LibView() {
 
 		JPanel topBar = new JPanel();
 		topBar.setBackground(new Color(0, 191, 255));
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -74,34 +68,34 @@ public class LibView extends JPanel {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane);
-		
-		
+
+
 		JLabel lblAdmin = new JLabel("LIBRARIAN");
 		lblAdmin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAdmin.setForeground(Color.WHITE);
 		lblAdmin.setFont(new Font("Segoe UI Black", Font.PLAIN, 25));
 		topBar.add(lblAdmin);
 		setLayout(groupLayout);
-		
-		
+
+
 		/* Trying manual code for tabbed pane */
-		
+
 		/* Here we have the panels for the tabbed panes */
 		JPanel stationaryShop = new JPanel();
 		JPanel publisherShop = new JPanel();
 		BorrowedView borrowView = new BorrowedView();
-		
+
 		/* Adding each panel to the tab */
 		tabbedPane.add("Order Stationary", stationaryShop);
 		tabbedPane.add("Order Books", publisherShop);
-		tabbedPane.add("Validate Returns", borrowView);
-		
+		tabbedPane.add("Borrowed Backlog", borrowView);
+
 		/**********************************
 		 ******** BORROWED BACKLOG ********
 		 **********************************/
 	}
-}
+} 
