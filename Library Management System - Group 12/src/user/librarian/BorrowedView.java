@@ -108,22 +108,25 @@ public class BorrowedView extends JPanel {
 		        			 */
 
 		        			int value =  JOptionPane.showConfirmDialog(null, "Charge user with damage fees?", userBorrowing, JOptionPane.YES_NO_OPTION);
+	                    	/* Retrieves the ISBN */
+	                    	int borrowedISBN = Integer.parseInt((String) tableModel.getValueAt(selectedRow, 1));
+	                   
+	                    	/* Retrieves the returned date */
+	                    	String returnedDate = ((String) tableModel.getValueAt(selectedRow, 3));
+	                    	
 		                    if (value == JOptionPane.YES_OPTION) {
-		                    	/* Retrieves the ISBN */
-		                    	int borrowedISBN = Integer.parseInt((String) tableModel.getValueAt(selectedRow, 1));
-		                   
-		                    	/* Retrieves the returned date */
-		                    	String returnedDate = ((String) tableModel.getValueAt(selectedRow, 3));
-
 		                    	chargeUser(getFee(borrowedISBN), userBorrowing, returnedDate, borrowedISBN);
 		                    	JOptionPane.showMessageDialog(borrowedBacklog, "User charged with damages, book has been returned");
 		                    	System.out.println("charging user " + userBorrowing);
 		                    	tableModel.removeRow(selectedRow);
+		                    	db.updateCheckedOut(borrowedISBN);
 		                    	
 		                    } else if (value == JOptionPane.NO_OPTION) {
 		                    	System.out.println("no i will not charge users");
 		                    	JOptionPane.showMessageDialog(borrowedBacklog, "Book has been returned");
 		                    	tableModel.removeRow(selectedRow);
+		                    	db.updateCheckedOut(borrowedISBN);
+
 		                    	pane.setVisible(false);
 		                    }
 		        		}

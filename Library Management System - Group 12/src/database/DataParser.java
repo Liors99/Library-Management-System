@@ -290,5 +290,17 @@ public class DataParser{
     	}
     }
     
+    public void updateCheckedOut(int isbn) {
+    	try {
+    		String query = "update books_and_others set qCheckedOut = qCheckedOut-1 where ID='"+isbn+"'";
+    		System.out.println("Query being performed is " + query);
+    		state.executeUpdate(query);    		
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+   	}
+    
+    
 }
 
