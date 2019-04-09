@@ -32,6 +32,7 @@ public class BookController implements ControllerInterface{
 				view.addOrderListener(new orderListener());
 				break;
 			case "Return":
+				view.addOrderListener(new returnListener());
 				break;
 			default:
 				break;
@@ -102,6 +103,17 @@ public class BookController implements ControllerInterface{
 	
 		public void actionPerformed(ActionEvent arg0) {
 			view.frame.dispose();
+		}
+	
+	}
+	
+	public class returnListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			
+			SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+			Date return_date= new Date();
+			
+			d.executeReturn(date_format.format(return_date), book.getId(),current_user.getCurrentUserName());
 		}
 	
 	}

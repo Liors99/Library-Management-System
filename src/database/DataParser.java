@@ -229,15 +229,25 @@ public class DataParser{
     
     
     public ResultSet queryBorrowed() {
+
     	try {
-    		String query = "select username, borrowed_id, date_borrowed, isbn from borrowed";
+
+    		String query = "select userRenter, itemRented, dateRented, dateReturned from rentalObj where dateReturned is not null";
+
     		System.out.println("Query being performed is " + query);
+
     		return state.executeQuery(query);
+
     	} catch (SQLException ex) {
+
     		ex.printStackTrace();
+
     		connected = false;
+
     	}
+
     	return null;
+
     }
     
     public double findPrice(int ISBN) {
@@ -306,5 +316,58 @@ public class DataParser{
     	}
 		return 0;
     }
+    
+    public void executeReturn(String returnDate, int isbn, String name) {
+        try {
+            String query = "update rentalObj set datereturned='"+returnDate+"' where userRenter ='"+name+"' and itemRented='"+isbn+"'" ;
+            System.out.println("Query being performed is " + query);
+            state.executeUpdate(query);            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            connected = false;
+        }
+    }
+    
+    public void validateReturn(String user, int isbn, String returnDate) {
+
+    	try {
+
+    		String query = "delete from rentalObj where userRenter='"+user+"' and itemRented='"+isbn+"' and dateReturned='"+returnDate+"'";
+
+    		System.out.println("Query being performed is " + query);
+
+    		state.executeUpdate(query);    		
+
+    	} catch (SQLException ex) {
+
+    		ex.printStackTrace();
+
+    		connected = false;
+
+    	}
+
+    }
+
+    
+
+    public void updateCheckedOut(int isbn) {
+
+    	try {
+
+    		String query = "update books_and_others set qCheckedOut = qCheckedOut-1 where ID='"+isbn+"'";
+
+    		System.out.println("Query being performed is " + query);
+
+    		state.executeUpdate(query);    		
+
+    	} catch (SQLException ex) {
+
+    		ex.printStackTrace();
+
+    		connected = false;
+
+    	}
+
+   	}
 }
 
