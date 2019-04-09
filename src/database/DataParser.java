@@ -38,23 +38,15 @@ public class DataParser{
            connected = false;
         }
     }
-    
-    public void createTable() {
-    	try {
-    	state.executeUpdate("CREATE TABLE IF NOT EXISTS `rentalObj` ( `userRenter` VARCHAR(255) NOT NULL, `itemRented` INT(11) NOT NULL, `dateRented` DATE NOT NULL) ENGINE = InnoDB");
-    	}catch(SQLException ex) {
-    		System.out.println(ex.getMessage());
-    	//	ex.getMessage()
-    	}
-    }
 
-    /**
+   
+	/**
     * Performs query based on string from user
     */
     public ResultSet performQuery(String query){
         try{
             if(validateQuery(query)){
-                //System.out.println("Query being performed is " + query);
+                System.out.println("Query being performed is " + query);
                 ResultSet result = state.executeQuery(query);
                 return result;
             }
@@ -116,14 +108,14 @@ public class DataParser{
            connected = false;
         }
     }
-    
+        
     /**
      * 
      * @param type
      * @param query
      * @return
      */
-    public ResultSet searchBook(String type, String term) {
+    public ResultSet search(String type, String term) {
     	try{
     		String query  = "";
     		if(type == "name" || type == "author" || type == "course") {
@@ -141,26 +133,6 @@ public class DataParser{
         }
         return null;
     }
-    
-    /**
-    *
-    * @param type
-    * @param query
-    * @return
-    */
-   public ResultSet searchUser(String term) {
-       try{
-           String query  = "";
-           query = "select * from users_and_passwords where username like \"%" + term + "%\";";
-           //System.out.println("Query being performed is " + query);
-           return state.executeQuery(query);
-       }
-       catch(SQLException ex) {
-          ex.printStackTrace();
-          connected = false;
-       }
-       return null;
-   }
 
     /**
     * Validates query request
@@ -227,10 +199,9 @@ public class DataParser{
     	}
     }
     
-    
     public ResultSet queryBorrowed() {
     	try {
-    		String query = "select username, borrowed_id, date_borrowed, isbn from borrowed";
+    		String query = "select userRenter, itemRented, dateRented, dateReturned from rentalObj where dateReturned is not null";
     		System.out.println("Query being performed is " + query);
     		return state.executeQuery(query);
     	} catch (SQLException ex) {
@@ -242,7 +213,7 @@ public class DataParser{
     
     public double findPrice(int ISBN) {
     	try {
-    		String query = "select price from books_and_others right join borrowed on borrowed.isbn = books_and_others.id and books_and_others.id = " + ISBN;
+    		String query = "select price from books_and_others inner join rentalObj on rentalObj.itemRented = books_and_others.id and books_and_others.id = " + ISBN;
     		System.out.println("Query being performed is " + query);
     		ResultSet price = state.executeQuery(query);
     		if (price.next()) {
@@ -266,6 +237,7 @@ public class DataParser{
     	}
     }
     
+
     public void executeUpdateFunds(double funds, String user) {
     	try {
     		String query = "update users_and_passwords set funds = funds + " + funds + " where username ='"+user+"'";
@@ -276,7 +248,7 @@ public class DataParser{
     		connected = false;
     	}
     }
-
+    
     public double queryGetFunds(String user) {
     	try {
     		String query = "select funds from users_and_passwords where username ='"+user+"'";
@@ -290,21 +262,45 @@ public class DataParser{
     	}
 		return 0;
     }
-
+    
     public double queryGetFees(String user) {
     	try {
-    		String query = "select fees from users_and_passwords where username ='"+user+"'";
+    		String query = "select balance from users_and_passwords where username ='"+user+"'";
     		System.out.println("Query being performed is " + query);
     		ResultSet extractedFees = state.executeQuery(query);
     		extractedFees.next();
 
-    		return extractedFees.getDouble("fees");
-
+    		return extractedFees.getDouble("balance");
+    		
     	} catch (SQLException ex) {
     		ex.printStackTrace();
     		connected = false;
     	}
 		return 0;
     }
+    
+    public void validateReturn(String user, int isbn, String returnDate) {
+    	try {
+    		String query = "delete from rentalObj where userRenter='"+user+"' and itemRented='"+isbn+"' and dateReturned='"+returnDate+"'";
+    		System.out.println("Query being performed is " + query);
+    		state.executeUpdate(query);    		
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+    }
+    
+    public void updateCheckedOut(int isbn) {
+    	try {
+    		String query = "update books_and_others set qCheckedOut = qCheckedOut-1 where ID='"+isbn+"'";
+    		System.out.println("Query being performed is " + query);
+    		state.executeUpdate(query);    		
+    	} catch (SQLException ex) {
+    		ex.printStackTrace();
+    		connected = false;
+    	}
+   	}
+    
+    
 }
 
