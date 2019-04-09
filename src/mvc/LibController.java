@@ -1,14 +1,13 @@
-package user.librarian;
+package mvc;
 
 import database.DataParser;
 import mvc.ControllerInterface;
-import mvc.CurrentController;
 
-public class LibController extends CurrentController implements ControllerInterface {
-	
+public class LibController implements ControllerInterface {
+
 	LibView view;
 	LibModel model;
-	
+
 	/* Used for queries */
 	DataParser data = new DataParser();
 
@@ -18,5 +17,5 @@ public class LibController extends CurrentController implements ControllerInterf
 		this.model = libModel;
 	}
 
-	
+
 }
