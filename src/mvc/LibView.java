@@ -1,4 +1,4 @@
-package mvc;
+package user.librarian;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,6 +18,12 @@ import javax.swing.table.DefaultTableModel;
 
 import database.BooksAndStuff;
 import database.DataParser;
+import user.student.AccountView;
+import user.student.BookController;
+import user.student.BookModel;
+import user.student.Book_view;
+import user.student.SearchView;
+import user.student.ShopView;
 
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -41,7 +47,7 @@ public class LibView extends JPanel {
 
 	DataParser db = new DataParser();
 	JTable borrowedTable;
-	private String[] columnNames = {"Name", "ID", "Date Borrowed", "ISBN"};
+	private String[] columnNames = {"Name", "ID", "Date Returned", "ISBN"};
 
 	public LibView() {
 
@@ -92,7 +98,7 @@ public class LibView extends JPanel {
 		/* Adding each panel to the tab */
 		tabbedPane.add("Order Stationary", stationaryShop);
 		tabbedPane.add("Order Books", publisherShop);
-		tabbedPane.add("Borrowed Backlog", borrowView);
+		tabbedPane.add("Validate Returns", borrowView);
 		
 		/**********************************
 		 ******** BORROWED BACKLOG ********

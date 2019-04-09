@@ -1,9 +1,10 @@
-package mvc;
+package user.librarian;
 
 import database.DataParser;
 import mvc.ControllerInterface;
+import mvc.CurrentController;
 
-public class LibController implements ControllerInterface {
+public class LibController extends CurrentController implements ControllerInterface {
 	
 	LibView view;
 	LibModel model;

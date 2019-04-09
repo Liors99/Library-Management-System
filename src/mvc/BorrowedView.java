@@ -1,4 +1,4 @@
-package mvc;
+package user.librarian;
 
 import java.awt.GridLayout;
 import java.sql.ResultSet;
@@ -22,8 +22,16 @@ public class BorrowedView extends JPanel {
 	JPanel borrowedBacklog = new JPanel();
 	DataParser db = new DataParser();
 	JTable borrowedTable;
-	private String[] columnNames = {"Name", "ID", "Date Borrowed", "ISBN"};
+	private String[] columnNames = {"Name", "ISBN", "Date Borrowed", "Date Returned"};
 
+	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
+
+	    @Override
+	    public boolean isCellEditable(int row, int column) {
+	       //all cells false
+	       return false;
+	    }
+	};
 	
 	public BorrowedView() {
 
@@ -45,17 +53,6 @@ public class BorrowedView extends JPanel {
 		this.setLayout(new GridLayout(0, 1, 0, 0));
 		this.add(scrollPane);
 		borrowedBacklog.setLayout(gl_borrowedBacklog);
-
-		
-		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
-
-		    @Override
-		    public boolean isCellEditable(int row, int column) {
-		       //all cells false
-		       return false;
-		    }
-		};
-
 		borrowedTable = new JTable(tableModel);
 		scrollPane.setViewportView(borrowedTable);
 
@@ -63,12 +60,12 @@ public class BorrowedView extends JPanel {
 		try {
 			listOfBorrowedItems = db.queryBorrowed();
 			while(listOfBorrowedItems.next()) {
-				String name = listOfBorrowedItems.getString("username");
-				String ID	= listOfBorrowedItems.getString("borrowed_id");
-				String date = listOfBorrowedItems.getString("date_borrowed");
-				String isbn = listOfBorrowedItems.getString("ISBN");
+				String name = listOfBorrowedItems.getString("userRenter");
+				String ISBN	= listOfBorrowedItems.getString("itemRented");
+				String dRented = listOfBorrowedItems.getString("dateRented");
+				String dReturned = listOfBorrowedItems.getString("dateReturned");
 				
-				Object[] objs = {name, ID, date, isbn};
+				Object[] objs = {name, ISBN, dRented, dReturned};
 				tableModel.addRow(objs);
 			}
 		}
@@ -87,6 +84,8 @@ public class BorrowedView extends JPanel {
 		    		if (!e.getValueIsAdjusting()) { 
 		        		int selectedRow = borrowedTable.getSelectedRow();
 		        		if(selectedRow >= 0) {
+
+
 		        			String userBorrowing = (String) tableModel.getValueAt(selectedRow, 0);
 		        			System.out.println(userBorrowing);
 		        			
@@ -109,13 +108,25 @@ public class BorrowedView extends JPanel {
 		        			 */
 
 		        			int value =  JOptionPane.showConfirmDialog(null, "Charge user with damage fees?", userBorrowing, JOptionPane.YES_NO_OPTION);
+	                    	/* Retrieves the ISBN */
+	                    	int borrowedISBN = Integer.parseInt((String) tableModel.getValueAt(selectedRow, 1));
+	                   
+	                    	/* Retrieves the returned date */
+	                    	String returnedDate = ((String) tableModel.getValueAt(selectedRow, 3));
+	                    	
 		                    if (value == JOptionPane.YES_OPTION) {
-		                    	int borrowedISBN = Integer.parseInt((String) tableModel.getValueAt(selectedRow, 3));
-		                    	chargeUser(getFee(borrowedISBN), userBorrowing);
+		                    	chargeUser(getFee(borrowedISBN), userBorrowing, returnedDate, borrowedISBN);
+		                    	JOptionPane.showMessageDialog(borrowedBacklog, "User charged with damages, book has been returned");
 		                    	System.out.println("charging user " + userBorrowing);
+		                    	tableModel.removeRow(selectedRow);
+		                    	db.updateCheckedOut(borrowedISBN);
 		                    	
 		                    } else if (value == JOptionPane.NO_OPTION) {
 		                    	System.out.println("no i will not charge users");
+		                    	JOptionPane.showMessageDialog(borrowedBacklog, "Book has been returned");
+		                    	tableModel.removeRow(selectedRow);
+		                    	db.updateCheckedOut(borrowedISBN);
+
 		                    	pane.setVisible(false);
 		                    }
 		        		}
@@ -124,15 +135,23 @@ public class BorrowedView extends JPanel {
 		    });
 	}
 	
+	/*
+	 * Grabs the price of the book and charges a given user 1/2 the price
+	 */
 	private double getFee(int ISBN) {
 		/* Query to get the fee */
 		double price = db.findPrice(ISBN);
-		System.out.println(price / 2);
+		System.out.println("price that you're charging: " + price / 2);
 		return (price / 2);
 	}
-	
-	private void chargeUser(double fee, String user) {
+
+	/* Function will do the following:
+	 * 1) Add fees onto the user
+	 * 2) Delete the borrowedObj entry from the table, since return has been completed
+	 */
+	private void chargeUser(double fee, String user, String returnDate, int ISBN) {
 		db.executeAddFee(fee, user);
+		db.validateReturn(user, ISBN, returnDate);
 	}
 	
 }
