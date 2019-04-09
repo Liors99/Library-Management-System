@@ -38,7 +38,8 @@ public class BookController {
 			
 			//User.getData().performQuery("SELECT id");
 			//book.getDataParser().performInsert("INSERT INTO rentals (idrental, rental_Date, iditem, idrenter, lastupdate) VALUES (" + User.name )
-			book.getDataParser().performUpdate("UPDATE books_and_others SET qCheckedOut = " + (numCheckedOut + 1) + " WHERE name = '" + book.getName() + "'" );;
+			book.getDataParser().performUpdate("UPDATE books_and_others SET qCheckedOut = qCheckedOut+1 WHERE name = '" + book.getName() + "'" );
+			System.out.println("test");
 		}
 	}
 	
