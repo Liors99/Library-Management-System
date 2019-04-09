@@ -64,6 +64,7 @@ public class RegisterController implements ControllerInterface{
 					User.setID(user, view.getID());
 					User.setName(user, view.getFullName());
 					
+					d.performUpdate("UPDATE users_and_passwords SET accountType = 0 WHERE username = '" + user + "'");
 					
 					LoginView log_view= new LoginView();
 					LoginModel log_mod= new LoginModel();
