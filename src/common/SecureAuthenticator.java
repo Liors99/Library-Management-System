@@ -91,5 +91,17 @@ public class SecureAuthenticator {
 		}
 		return false;
 	}
+	
+	public boolean verifyFaculty(String username, String pwd) {
+		if(user_data.userExists(username)) {
+			int type = user_data.getAccountType(username);
+			/* Type = 3 for Librarian */
+			if (type == 4) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
+

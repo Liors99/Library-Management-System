@@ -97,7 +97,13 @@ public class systemController implements ControllerInterface{
 					
 					setPanel(view,libView, frame);
 				}
-				else {
+				else if(user.equals("faculty") || model.checkFaculty(user, pw, auth)) {
+					current_user.setCurrentUserName(user);
+					FacultyView authView = new FacultyView();
+					setPanel(view, authView, frame);
+
+				}
+				else{
 					
 					current_user.setCurrentUserName(user);
 					HomeView authView = new HomeView();

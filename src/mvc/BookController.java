@@ -27,6 +27,13 @@ public class BookController implements ControllerInterface{
 		view.name_label.setText(book.getName());
 		view.author_label.setText(book.getAuthor());
 		
+        
+        
+       
+        
+        
+        
+        
 		switch(view.getButtonType()) {
 			case "Borrow":
 				view.addOrderListener(new orderListener());
@@ -41,7 +48,7 @@ public class BookController implements ControllerInterface{
 			
 		
 		
-		view.addBackListener(new backToSearchListener());
+	//	view.addBackListener(new backToSearchListener());
 	}
 	
 	public class orderListener implements ActionListener{
@@ -52,6 +59,16 @@ public class BookController implements ControllerInterface{
 			
 			int rentCount = 0;
 			
+             int numReservedOut = book.getReservedOut(book.getFaculty(book.getName()));
+			
+			
+			int reservedNum = book.getReservedTotal(book.getName());
+            
+            
+            String userFaculty = User.getFaculty(current_user.getCurrentUserName());
+			String reserveFaculty = book.getFaculty(book.getName());
+            
+            
 			try {
 			 ResultSet rents = book.getDataParser().performQuery("SELECT userRenter FROM rentalObj WHERE userRenter = '" + current_user.getCurrentUserName() + "'");//.getObject();
 			
@@ -67,7 +84,10 @@ public class BookController implements ControllerInterface{
 				System.out.println("All copies are currently unavailable");
 			}else if(rentCount >= 5){
 				System.out.println("You have exceeded your rental capacity");
+			}else if(!(userFaculty.equals(reserveFaculty) && (total - numCheckedOut) < (reservedNum - numReservedOut )) ) {
+				System.out.println("All remaining copies are reserved");
 			}
+			
 			
 			else{
 				
@@ -78,7 +98,7 @@ public class BookController implements ControllerInterface{
 				boolean isPayment = false;
 				
 				
-				book.getDataParser().createTable();
+			//	book.getDataParser().createTable();
 
 				DateFormat dateForm = new  SimpleDateFormat("yyyy-MM-dd");
 				Date date = new Date();
@@ -89,7 +109,11 @@ public class BookController implements ControllerInterface{
 				book.getDataParser().performInsert("INSERT INTO rentalObj (userRenter, itemRented, dateRented) VALUES ('" + current_user.getCurrentUserName() + "', " + book.getId() + ", DATE '" + dateStr + "')");
 				System.out.println("Book has been reserved!");
 				book.getDataParser().performUpdate("UPDATE books_and_others SET qCheckedOut = " + (numCheckedOut + 1) + " WHERE name = '" + book.getName() + "'" );
-
+				if(userFaculty.equals(reserveFaculty)) {
+					book.setReservedOut(book.getName(), numReservedOut + 1);
+				
+				}
+			
 			}
 			
 	}
@@ -98,14 +122,6 @@ public class BookController implements ControllerInterface{
 	
 
 }
-	
-	public class backToSearchListener implements ActionListener {
-	
-		public void actionPerformed(ActionEvent arg0) {
-			view.frame.dispose();
-		}
-	
-	}
 	
 	public class returnListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {

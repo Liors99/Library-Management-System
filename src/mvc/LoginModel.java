@@ -27,6 +27,17 @@ public class LoginModel{
 		}
 	}
 	
+    
+    public boolean checkFaculty(String x, String y, SecureAuthenticator auth) {
+		if(auth.verifyFaculty(x, y)) {
+			//this.authenticated=true;
+			//System.out.println("authenticated");
+			return true;
+		}else {
+			return false;
+		}
+	}
+    
 	public boolean checkLib(String user, String pw, SecureAuthenticator auth) {
 		return auth.verifyLib(user, pw);
 	}
