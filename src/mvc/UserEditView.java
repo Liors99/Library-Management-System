@@ -215,5 +215,7 @@ public class UserEditView {
 	
 	public void addFeeListener(ActionListener e) {
 		rdbtnClearFee.addActionListener(e);
+		System.out.println(rdbtnClearFee.getText());
+		
 	}
 }

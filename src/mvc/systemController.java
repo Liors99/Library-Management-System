@@ -93,13 +93,13 @@ public class systemController implements ControllerInterface{
 				else if(user.equals("lib") || model.checkLib(user, pw, auth)) {
 					LibView libView = new LibView();
 					LibModel libModel = new LibModel();
-					LibController libController = new LibController(libView, libModel);
+					LibController libController = new LibController(libView, libModel,frame);
 					
 					setPanel(view,libView, frame);
 				}
 				else if(user.equals("faculty") || model.checkFaculty(user, pw, auth)) {
 					current_user.setCurrentUserName(user);
-					FacultyView authView = new FacultyView();
+					FacultyView authView = new FacultyView(frame);
 					setPanel(view, authView, frame);
 
 				}

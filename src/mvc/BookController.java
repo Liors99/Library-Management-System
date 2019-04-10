@@ -8,6 +8,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import database.BooksAndStuff;
 import database.User;
 
@@ -27,13 +29,6 @@ public class BookController implements ControllerInterface{
 		view.name_label.setText(book.getName());
 		view.author_label.setText(book.getAuthor());
 		
-        
-        
-       
-        
-        
-        
-        
 		switch(view.getButtonType()) {
 			case "Borrow":
 				view.addOrderListener(new orderListener());
@@ -82,10 +77,13 @@ public class BookController implements ControllerInterface{
 			
 			if(numCheckedOut >= total) {
 				System.out.println("All copies are currently unavailable");
+				JOptionPane.showMessageDialog(null, "All copies are currently unavailable");
 			}else if(rentCount >= 5){
 				System.out.println("You have exceeded your rental capacity");
+				JOptionPane.showMessageDialog(null, "You have exceeded your rental capacity");
 			}else if(!(userFaculty.equals(reserveFaculty)) && (total - numCheckedOut) <= (reservedNum - numReservedOut ) && !reserveFaculty.equals("")   ) {
 				System.out.println("All remaining copies are reserved" );
+				JOptionPane.showMessageDialog(null, "All remaining copies are reserved" );
 			}
 			
 			
@@ -108,6 +106,7 @@ public class BookController implements ControllerInterface{
 				
 				book.getDataParser().performInsert("INSERT INTO rentalObj (userRenter, itemRented, dateRented) VALUES ('" + current_user.getCurrentUserName() + "', " + book.getId() + ", DATE '" + dateStr + "')");
 				System.out.println("Book has been reserved!");
+				JOptionPane.showMessageDialog(null, "Book has been reserved!");
 				book.getDataParser().performUpdate("UPDATE books_and_others SET qCheckedOut = " + (numCheckedOut + 1) + " WHERE name = '" + book.getName() + "'" );
 				if(userFaculty.equals(reserveFaculty)) {
 					book.setReservedOut(book.getName(), numReservedOut + 1);
@@ -130,6 +129,9 @@ public class BookController implements ControllerInterface{
 			Date return_date= new Date();
 			
 			d.executeReturn(date_format.format(return_date), book.getId(),current_user.getCurrentUserName());
+			
+			JOptionPane.showMessageDialog(null, "Book has been returned, awaiting librarian confirmation");
+			view.frame.dispose();
 		}
 	
 	}

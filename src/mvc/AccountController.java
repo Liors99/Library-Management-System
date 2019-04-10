@@ -40,11 +40,12 @@ public class AccountController implements ControllerInterface{
 		
 		if(first_time) {
 			int late_fees= model.calcTotalCharge(current_user.getAllRentalDates(current_name));
-			int current_balance= User.getFunds(current_name);
-			User.setFunds(current_name, current_balance - late_fees);
+			User.setFees(current_name, late_fees);
+			//int current_balance= User.getFunds(current_name);
+			//User.setFunds(current_name, current_balance - late_fees);
 		}
 		
-		view.setFeesDisplay(User.getFunds(current_name));
+		view.setFeesDisplay(User.getFunds(current_name)-User.getFees(current_name));
 		
 	}
 	

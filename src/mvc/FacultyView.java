@@ -11,10 +11,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import database.BooksAndStuff;
 import database.User;
 
-public class FacultyView extends JPanel {
+public class FacultyView extends JPanel implements ControllerInterface{
 	private JTextField textField;
 	private JLabel lblNewLabel_1;
-	public FacultyView() {
+	private JPanel faculty_view;
+	
+	public FacultyView(MainFrame frame) {
+		faculty_view=this;
+		
 		setBackground(new Color(255, 255, 255));
 		
 		this.setBounds(155, 62, 835, 457);
@@ -32,6 +36,19 @@ public class FacultyView extends JPanel {
 		
 		lblNewLabel_1 = new JLabel(User.getFaculty("FACULTY: " + User.getCurrentUserName()));
 		lblNewLabel_1.setVisible(true);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.RED);
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				LoginView log_view= new LoginView();
+				LoginModel log_model= new LoginModel();
+				systemController log_con= new systemController(log_view, log_model,frame);
+				
+				setPanel(faculty_view, log_view, frame);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -49,8 +66,11 @@ public class FacultyView extends JPanel {
 							.addComponent(searchBtn))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(85)
-							.addComponent(lblNewLabel_1)))
-					.addContainerGap(534, Short.MAX_VALUE))
+							.addComponent(lblNewLabel_1))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnLogout, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(411, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -64,7 +84,9 @@ public class FacultyView extends JPanel {
 					.addComponent(lblNewLabel_1)
 					.addGap(10)
 					.addComponent(notFound)
-					.addContainerGap(390, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnLogout)
+					.addContainerGap(356, Short.MAX_VALUE))
 		);
 		
 		//	searchButton.addActionListener(new ActionListener() {

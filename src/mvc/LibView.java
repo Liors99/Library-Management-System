@@ -49,7 +49,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 
 import java.awt.SystemColor;
-
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 import java.sql.SQLException;
@@ -85,7 +85,8 @@ public class LibView extends JPanel {
 	JTable borrowedTable;
 
 	private String[] columnNames = {"Name", "ID", "Date Returned", "ISBN"};
-
+	
+	private JButton btnLogout;
 
 
 	public LibView() {
@@ -145,12 +146,19 @@ public class LibView extends JPanel {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 
 		panel.add(tabbedPane);
+		topBar.setLayout(null);
+		
+		btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.RED);
+		btnLogout.setBounds(24, 17, 101, 23);
+		topBar.add(btnLogout);
 
 		
 
 		
 
 		JLabel lblAdmin = new JLabel("LIBRARIAN");
+		lblAdmin.setBounds(442, 5, 141, 35);
 
 		lblAdmin.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -180,6 +188,7 @@ public class LibView extends JPanel {
 
 		
 
+		
 		/* Adding each panel to the tab */
 
 		tabbedPane.add("Order Stationary", stationaryShop);
@@ -197,5 +206,8 @@ public class LibView extends JPanel {
 		 **********************************/
 
 	}
-
+	
+	void addLogoutListener(ActionListener listenForLogout) {
+		btnLogout.addActionListener(listenForLogout);
+	}
 }
