@@ -206,6 +206,10 @@ public class UserEditView {
 		btnDeleteUser.addActionListener(listenRemove);
 	}
 	
+	public JRadioButton getClearFee() {
+		return this.rdbtnClearFee;
+	}
+	
 	public void addEditUserListener(ActionListener e) {
 		edit_button.addActionListener(e);
 	}

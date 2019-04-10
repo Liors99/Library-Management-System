@@ -30,7 +30,7 @@ public class UserEditController implements ControllerInterface{
 		
 		view.addEditUserListener(new EditListener());
 		view.addUserRemoveListener(new RemoveListener());
-		view.addFeeListener(new FeeListener());
+		//view.addFeeListener(new FeeListener());
 		
 	}
 	
@@ -47,6 +47,12 @@ public class UserEditController implements ControllerInterface{
 			}
 			if(view.GetRankValue().equals("Admin")) {
 				data.performUpdate("UPDATE users_and_passwords SET accountType = 2 WHERE username = '" + edit_username+ "'");
+			}
+			
+			if(view.getClearFee().isSelected()) {
+				System.out.println("Clears fees for "+edit_username);
+				User.setFunds(edit_username, 0);
+				User.setFees(edit_username, 0);
 			}
 
 			admin_view.initTable();
@@ -71,14 +77,9 @@ public class UserEditController implements ControllerInterface{
 		}
 	
 	}
+
+
 	
-	/* Removes a user */
-	class FeeListener implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(edit_username);
-			User.setFunds(edit_username, 0);
-		}
-	}
 	
 	
 
