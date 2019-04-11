@@ -181,7 +181,7 @@ public class AdminView extends JPanel {
 				String username = r.getString("username");
 				String ID=User.getID(username);
 				String name= User.getName(username);
-				String Rank="TEST";
+				String Rank="";
 				switch(User.getAccountType(username)) {
 					case 0:
 						Rank = "Student";
@@ -193,6 +193,9 @@ public class AdminView extends JPanel {
 						break;
 					case 3:
 						Rank="Librarian";
+						break;
+					case 4:
+						Rank="Faculty";
 						break;
 					default:
 						break;
