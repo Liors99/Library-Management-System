@@ -227,29 +227,31 @@ public class DataParser{
     	}
     }
     
-    
+    /**
+     * Query which will return the ResultSet for all the objects that have been returned. 
+     * This function is used by the librarian to display returned objects so they can validate returns
+     * @return the results of the query, which should be formatted userRenter, itemRented, dateRented, and dateReturned from rentalObj
+     */
     public ResultSet queryBorrowed() {
 
     	try {
-
     		String query = "select userRenter, itemRented, dateRented, dateReturned from rentalObj where dateReturned is not null";
-
     		System.out.println("Query being performed is " + query);
-
     		return state.executeQuery(query);
-
     	} catch (SQLException ex) {
-
     		ex.printStackTrace();
-
     		connected = false;
-
     	}
 
     	return null;
 
     }
     
+    /**
+     * Performs a right join with borrowed and books_and_others. What this will return is the price of a book, which is in the books_and_others table
+     * This price is used in the librarian packages, where they find the price of the book to charge a damage fee
+     * @param isbn This is the ISBN of the book borrowed
+     */
     public double findPrice(int ISBN) {
     	try {
     		String query = "select price from books_and_others right join borrowed on borrowed.isbn = books_and_others.id and books_and_others.id = " + ISBN;
@@ -265,6 +267,11 @@ public class DataParser{
 		return 0.00;
     }
     
+    /**
+     * Updates the users_and_passwords table with the a users updated balance, after adding fees to it
+     * @param fee double which is the price of the damaged book / 2
+     * @param user the user in which we're updating
+     */
     public void executeAddFee(double fee, String user) {
     	try {
     		String query = "update users_and_passwords set balance = balance + " + fee + " where username ='"+user+"'";
@@ -276,6 +283,11 @@ public class DataParser{
     	}
     }
     
+    /**
+     * Updates the users_and_passwords table, this function is used by a student to add funds into their account
+     * @param funds amount of $ they want to add into their account
+     * @param user the account that will have updated funds
+     */
     public void executeUpdateFunds(double funds, String user) {
     	try {
     		String query = "update users_and_passwords set funds = funds + " + funds + " where username ='"+user+"'";
@@ -287,6 +299,11 @@ public class DataParser{
     	}
     }
 
+    /**
+     * Used to get the amount of funds thats that a student has. Used by the student class
+     * @param user the user that we're trying to get the funds of
+     * @return the amount the user has
+     */
     public double queryGetFunds(String user) {
     	try {
     		String query = "select funds from users_and_passwords where username ='"+user+"'";
@@ -301,15 +318,18 @@ public class DataParser{
 		return 0;
     }
 
+    /**
+     * Used to get the number of fees that a student has accumulated. This could be either from damage or late fees
+     * @param user
+     * @return $ amount in fees that is attached to the user account
+     */
     public double queryGetFees(String user) {
     	try {
     		String query = "select fees from users_and_passwords where username ='"+user+"'";
     		System.out.println("Query being performed is " + query);
     		ResultSet extractedFees = state.executeQuery(query);
     		extractedFees.next();
-
     		return extractedFees.getDouble("fees");
-
     	} catch (SQLException ex) {
     		ex.printStackTrace();
     		connected = false;
@@ -317,6 +337,12 @@ public class DataParser{
 		return 0;
     }
     
+    /**
+     * Performs a rental return, to be used by someone who borrows an object. Updates the given rental object with the dateReturned
+     * @param returnDate the date that the object was returned
+     * @param isbn object thats being returned
+     * @param name person returning the object
+     */
     public void executeReturn(String returnDate, int isbn, String name) {
         try {
             String query = "update rentalObj set datereturned='"+returnDate+"' where userRenter ='"+name+"' and itemRented='"+isbn+"'" ;
@@ -328,46 +354,38 @@ public class DataParser{
         }
     }
     
+    /**
+     * Part of the validation process by a librarian to validate returns. 
+     * Deletes the object from the rentalObj table
+     * @param user user thats returning
+     * @param isbn object they're returning
+     * @param returnDate their return date
+     */
     public void validateReturn(String user, int isbn, String returnDate) {
-
     	try {
-
     		String query = "delete from rentalObj where userRenter='"+user+"' and itemRented='"+isbn+"' and dateReturned='"+returnDate+"'";
-
     		System.out.println("Query being performed is " + query);
-
     		state.executeUpdate(query);    		
-
     	} catch (SQLException ex) {
-
     		ex.printStackTrace();
-
     		connected = false;
-
     	}
-
     }
 
     
-
+    /**
+     * When a librarian validates the return, this updates the amount of books that are checked out so it gets decremented by one
+     * @param isbn the object being returned
+     */
     public void updateCheckedOut(int isbn) {
-
     	try {
-
     		String query = "update books_and_others set qCheckedOut = qCheckedOut-1 where ID='"+isbn+"'";
-
     		System.out.println("Query being performed is " + query);
-
     		state.executeUpdate(query);    		
-
     	} catch (SQLException ex) {
-
     		ex.printStackTrace();
-
     		connected = false;
-
     	}
-
-   	}
+    }
 }
 

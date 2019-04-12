@@ -22,6 +22,7 @@ public class LibController implements ControllerInterface {
 		view.addLogoutListener(new LogoutListener());
 	}
 	
+	/* Logout */
 	class LogoutListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			LoginView log_view= new LoginView();
