@@ -17,19 +17,18 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Cursor;
 
-
 public class RegisterView extends JPanel {
-	
+
 	/* Text fields */
 	private JTextField textUsername = new JTextField(10);
 	private JPasswordField textPW = new JPasswordField();
-	
+
 	/* Labels */
 	private JLabel userLabel = new JLabel("username: ");
 	private JLabel pwLabel = new JLabel("password: ");
-	
+
 	private ArrayList<JTextField> all_fields;
-	
+
 	private final JPanel panel = new JPanel();
 	private final JLabel lblUNIVERSITY = new JLabel("UNIVERSITY");
 	private final JLabel lblOfToronto = new JLabel("OF TORONTO");
@@ -44,11 +43,9 @@ public class RegisterView extends JPanel {
 	private JTextField textID;
 	private JComboBox Faculty_comboBox;
 	private final JPasswordField textConfirmPass = new JPasswordField();
-	
-	
+
 	public RegisterView() {
-	
-		
+
 		this.setSize(1041, 536);
 		lblLoginHere.setBounds(491, 500, 93, 14);
 		lblLoginHere.setForeground(Color.BLUE);
@@ -78,14 +75,13 @@ public class RegisterView extends JPanel {
 		userLabel.setBounds(382, 349, 139, 22);
 		userLabel.setForeground(new Color(0, 191, 255));
 		userLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
-		
-		
+
 		textName = new JTextField(10);
 		textName.setBounds(544, 285, 156, 20);
-		
+
 		textLastName = new JTextField(10);
 		textLastName.setBounds(544, 316, 156, 20);
-		
+
 		textID = new JTextField(10);
 		textID.setBounds(544, 254, 156, 20);
 		setLayout(null);
@@ -93,22 +89,11 @@ public class RegisterView extends JPanel {
 		lblUNIVERSITY.setFont(new Font("Segoe UI Black", Font.PLAIN, 71));
 		add(panel);
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(313)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblUNIVERSITY)
-						.addComponent(lblOfToronto)))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(42)
-					.addComponent(lblUNIVERSITY)
-					.addGap(6)
-					.addComponent(lblOfToronto))
-		);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_panel.createSequentialGroup().addGap(313).addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblUNIVERSITY).addComponent(lblOfToronto))));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
+				.createSequentialGroup().addGap(42).addComponent(lblUNIVERSITY).addGap(6).addComponent(lblOfToronto)));
 		panel.setLayout(gl_panel);
 		add(userLabel);
 		textUsername.setBounds(544, 349, 156, 20);
@@ -127,70 +112,67 @@ public class RegisterView extends JPanel {
 		add(textName);
 		add(lblLastName);
 		add(textLastName);
-		
-		
-		all_fields= new ArrayList<JTextField>();
+
+		all_fields = new ArrayList<JTextField>();
 		all_fields.add(textUsername);
 		all_fields.add(textName);
 		all_fields.add(textLastName);
 		all_fields.add(textID);
 		all_fields.add(textPW);
 		all_fields.add(textConfirmPass);
-		
-		String[] Faculty_Strings = {"Science", "Arts", "Engineering", "Business"};
+
+		String[] Faculty_Strings = { "Science", "Arts", "Engineering", "Business" };
 		Faculty_comboBox = new JComboBox(Faculty_Strings);
 		Faculty_comboBox.setBounds(544, 442, 156, 20);
 		add(Faculty_comboBox);
-		
+
 		JLabel lblFaculty = new JLabel("Faculty:");
 		lblFaculty.setForeground(new Color(0, 191, 255));
 		lblFaculty.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
 		lblFaculty.setBounds(382, 438, 139, 22);
 		add(lblFaculty);
-		
+
 		this.setVisible(true);
 	}
-	
+
 	/* Getters and setters for various fields */
-	public ArrayList<JTextField> getTextField(){
+	public ArrayList<JTextField> getTextField() {
 		return this.all_fields;
 	}
-	
+
 	public String getUser() {
 		return textUsername.getText();
 	}
-	
+
 	public String getPW() {
 
 		return String.valueOf(textPW.getPassword());
 	}
-	
+
 	public String getPWconfirm() {
 		return String.valueOf(textConfirmPass.getPassword());
 	}
-	
-	
+
 	void addRegisterListener(ActionListener listenForReg) {
 		btnRegister.addActionListener(listenForReg);
 	}
-	
-	
+
 	public void setFalse() {
 		this.setVisible(false);
 	}
-	
+
 	public String GetFaculty() {
 		return (String) Faculty_comboBox.getSelectedItem();
 	}
-	
+
 	public String getID() {
 		return this.textID.getText();
 	}
-	
+
 	public String getFullName() {
-		return this.textName.getText()+" "+this.textLastName.getText();
+		return this.textName.getText() + " " + this.textLastName.getText();
 	}
-	
+
 	/*
 	 * Adds a listener to the blue text so that the user can switch back to login
 	 */
@@ -199,9 +181,9 @@ public class RegisterView extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				log.SwitchView();
-				
-				
+
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				lblLoginHere.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

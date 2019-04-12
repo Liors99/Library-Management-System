@@ -12,16 +12,17 @@ import database.User;
  *
  */
 public interface ControllerInterface {
-	
-	DataParser d= new DataParser();
-	SecureAuthenticator auth= new SecureAuthenticator(d);
-	User current_user= new User(d);
-	
+
+	DataParser d = new DataParser();
+	SecureAuthenticator auth = new SecureAuthenticator(d);
+	User current_user = new User(d);
+
 	/**
 	 * Sets the current JPanel
+	 * 
 	 * @param current_panel - the current panel
-	 * @param new_panel - the new panel
-	 * @param frame - the main frame we are running on
+	 * @param new_panel     - the new panel
+	 * @param frame         - the main frame we are running on
 	 */
 	public default void setPanel(JPanel current_panel, JPanel new_panel, MainFrame frame) {
 		current_panel.setVisible(false);
