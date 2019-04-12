@@ -78,6 +78,11 @@ public class User {
 		}
 	}
 	
+	/**
+	 * Gets the account type of a user
+	 * @param user - username
+	 * @return - returns the account type number
+	 */
 	public static int getAccountType(String user) {
 		String q = String.format("SELECT * FROM users_and_passwords WHERE username = '" + user + "'");
 		ResultSet r = data.performQuery(q);
@@ -114,7 +119,11 @@ public class User {
 		data.performUpdate(q);
 	}
 	
-	
+	/**
+	 * Gets all rental objects from the user
+	 * @param username - username
+	 * @return - A string array containing all the name of the books
+	 */
 	public String[] getAllRentals(String username){
         String[] lst = new String[5];
 		int i = 0;
@@ -148,6 +157,11 @@ public class User {
 
 
 
+	/**
+	 * Gets all the stamped date to as of when the rental object was borrowed
+	 * @param username - username 
+	 * @return - returns a string array containing all the dates
+	 */
 	public String[] getAllRentalDates(String username){
 	    String[] lst = new String[5];
 		int i = 0;
@@ -181,6 +195,10 @@ public class User {
 			data.addUser(user, s, h);
 		}
 	}
+	
+	
+	/* Getters and setters for the User object */
+	
 	public static DataParser getData(){
 		return data;
 	}
@@ -191,115 +209,115 @@ public class User {
 		current_username = usernm;
 	}
 	
-	//User stuff
-		public static int getFunds(String username) {
-			ResultSet r = User.getData().performQuery("SELECT balance FROM users_and_passwords WHERE username = '" + username + "'");
-				
-			int i = 0;
-	    	try {
-				r.next();
-				i = r.getInt("balance");
-				
-			}
-				catch(SQLException ex) {
-				
-			}
-	    	return i;
+	
+	public static int getFunds(String username) {
+		ResultSet r = User.getData().performQuery("SELECT balance FROM users_and_passwords WHERE username = '" + username + "'");
+			
+		int i = 0;
+    	try {
+			r.next();
+			i = r.getInt("balance");
+			
 		}
-		public static int getFees(String username) {
-			ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
-				
-	    	int i = 0;
-	    	try {
-				r.next();
-				i = r.getInt("fees");
-				
-			}
-				catch(SQLException ex) {
-				
-			}
-	    	return i;
+			catch(SQLException ex) {
+			
 		}
-		
-		public static String getFaculty(String username) {
-			ResultSet r = User.getData().performQuery("SELECT faculty FROM users_and_passwords WHERE username = '" + username + "'");
-				
-	    	//int i = 0;
-			String i = "";
-	    	try {
-				r.next();
-				i = r.getString("faculty");
-				
-			}
-				catch(SQLException ex) {
-				
-			}
-	    	return i;
+    	return i;
+	}
+	public static int getFees(String username) {
+		ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+			
+    	int i = 0;
+    	try {
+			r.next();
+			i = r.getInt("fees");
+			
 		}
-		
-		public static void setFees(String username, int value) {
-			ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
-			data.performInsert("UPDATE users_and_passwords SET fees = " + value + " WHERE username = '" + username + "'");
+			catch(SQLException ex) {
+			
+		}
+    	return i;
+	}
+	
+	public static String getFaculty(String username) {
+		ResultSet r = User.getData().performQuery("SELECT faculty FROM users_and_passwords WHERE username = '" + username + "'");
+			
+    	//int i = 0;
+		String i = "";
+    	try {
+			r.next();
+			i = r.getString("faculty");
+			
+		}
+			catch(SQLException ex) {
+			
+		}
+    	return i;
+	}
+	
+	public static void setFees(String username, int value) {
+		ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+		data.performInsert("UPDATE users_and_passwords SET fees = " + value + " WHERE username = '" + username + "'");
 
-		}
-		
-		public static void setFunds(String username, int value) {
-			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
-			data.performInsert("UPDATE users_and_passwords SET balance = " + value + " WHERE username = '" + username + "'");	
+	}
+	
+	public static void setFunds(String username, int value) {
+		//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+		data.performInsert("UPDATE users_and_passwords SET balance = " + value + " WHERE username = '" + username + "'");	
 
-		}
-		
-		public static void setFaculty(String username, String faculty) {
-			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
-			data.performInsert("UPDATE users_and_passwords SET faculty = '" + faculty + "' WHERE username = '" + username + "'");	
+	}
+	
+	public static void setFaculty(String username, String faculty) {
+		//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+		data.performInsert("UPDATE users_and_passwords SET faculty = '" + faculty + "' WHERE username = '" + username + "'");	
 
-		}
-		
-		public static void setName(String username, String name) {
-			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
-			data.performInsert("UPDATE users_and_passwords SET name = '" + name + "' WHERE username = '" + username + "'");	
-
-
-		}
-		
-	    
-	    public static String getName(String username) {
-			ResultSet r = User.getData().performQuery("SELECT name FROM users_and_passwords WHERE username = '" + username + "'");
-			String i = "";
-	    	try {
-				r.next();
-				i = r.getString("name");
-				
-			}
-				catch(SQLException ex) {
-				
-			}
-	    	return i;
-		}
-		
-	    public static void setID(String username, String value) {
-			//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
-			data.performInsert("UPDATE users_and_passwords SET ID = " + value + " WHERE username = '" + username + "'");	
+	}
+	
+	public static void setName(String username, String name) {
+		//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+		data.performInsert("UPDATE users_and_passwords SET name = '" + name + "' WHERE username = '" + username + "'");	
 
 
+	}
+	
+    
+    public static String getName(String username) {
+		ResultSet r = User.getData().performQuery("SELECT name FROM users_and_passwords WHERE username = '" + username + "'");
+		String i = "";
+    	try {
+			r.next();
+			i = r.getString("name");
+			
 		}
-		
-	    
-	   
-		public static String getID(String username) {
-			ResultSet r = User.getData().performQuery("SELECT ID FROM users_and_passwords WHERE username = '" + username + "'");
-				
-	    	String i = "";
-	    	try {
-				r.next();
-				i = r.getString("ID");
-				
-			}
-				catch(SQLException ex) {
-				
-			}
-	    	return i;
+			catch(SQLException ex) {
+			
 		}
+    	return i;
+	}
+	
+    public static void setID(String username, String value) {
+		//ResultSet r = User.getData().performQuery("SELECT fees FROM users_and_passwords WHERE username = '" + username + "'");
+		data.performInsert("UPDATE users_and_passwords SET ID = " + value + " WHERE username = '" + username + "'");	
+
+
+	}
+	
+    
+   
+	public static String getID(String username) {
+		ResultSet r = User.getData().performQuery("SELECT ID FROM users_and_passwords WHERE username = '" + username + "'");
+			
+    	String i = "";
+    	try {
+			r.next();
+			i = r.getString("ID");
+			
+		}
+			catch(SQLException ex) {
+			
+		}
+    	return i;
+	}
 	
 	
 }

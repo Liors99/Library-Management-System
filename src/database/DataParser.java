@@ -39,6 +39,9 @@ public class DataParser{
         }
     }
     
+    /*
+     * Creates a table for the rental object
+     */
     public void createTable() {
     	try {
     	state.executeUpdate("CREATE TABLE IF NOT EXISTS `rentalObj` ( `userRenter` VARCHAR(255) NOT NULL, `itemRented` INT(11) NOT NULL, `dateRented` DATE NOT NULL) ENGINE = InnoDB");
@@ -118,10 +121,10 @@ public class DataParser{
     }
     
     /**
-     * 
+     * Searches a book through the database
      * @param type
      * @param query
-     * @return
+     * @return - returns a ResultSet
      */
     public ResultSet searchBook(String type, String term) {
     	try{
@@ -143,7 +146,7 @@ public class DataParser{
     }
     
     /**
-    *
+    * Searches a user through the database
     * @param type
     * @param query
     * @return
