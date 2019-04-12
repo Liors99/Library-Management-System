@@ -32,11 +32,18 @@ public class AdminController implements ControllerInterface{
 		view.addLogoutListener(new LogoutListener());
 	}
 	
-	
+	/**
+	 * Initalizes the table in the admin view
+	 */
 	public void initTable() {
 		view.initTable();
 	}
 	
+	/**
+	 * 
+	 * Returns back to the login screen when logout is pressed
+	 *
+	 */
 	class LogoutListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			LoginView log_view= new LoginView();

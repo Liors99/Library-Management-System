@@ -67,6 +67,12 @@ public class SecureAuthenticator {
 		return false;
 	}
 	
+	/**
+	 * Verifies that the user is an admin
+	 * @param username - name of user to be verified
+	 * @param pwd - password of the user
+	 * @return - true if admin, false otherwise
+	 */
 	public boolean verifyAdmin(String username, String pwd) {
 		if(user_data.userExists(username)) {
 			int type = user_data.getAccountType(username);
@@ -81,6 +87,12 @@ public class SecureAuthenticator {
 		return false;
 	}
 	
+	/**
+	 * Verifies that the user is a librarian
+	 * @param username - name of user to be verified
+	 * @param pwd - password of the user
+	 * @return - true if librarian, false otherwise
+	 */
 	public boolean verifyLib(String username, String pwd) {
 		if(user_data.userExists(username)) {
 			int type = user_data.getAccountType(username);
@@ -92,6 +104,12 @@ public class SecureAuthenticator {
 		return false;
 	}
 	
+	/**
+	 * Verifies that the user is a faculty
+	 * @param username - name of user to be verified
+	 * @param pwd - password of the user
+	 * @return - true if faculty, false otherwise
+	 */
 	public boolean verifyFaculty(String username, String pwd) {
 		if(user_data.userExists(username)) {
 			int type = user_data.getAccountType(username);

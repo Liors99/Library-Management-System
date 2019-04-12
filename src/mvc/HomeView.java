@@ -161,6 +161,7 @@ public class HomeView extends JPanel {
 		btnLogout.addActionListener(listenForLogout);
 	}
 	
+	/* switches views */
 	public void switchToBorrow() {
 		cl.show(cards, "Borrow");
 	}
@@ -176,11 +177,10 @@ public class HomeView extends JPanel {
 	public void setName(String name) {
 		nameVar.setText(name);
 	}
+
 	/*
-	public void addFunds(int amount) {
-		acc.addFunds(amount);
-	}
-	*/
+	 * Returns the view it self
+	 */
 	public AccountView getView() {
 		return acc;
 	}

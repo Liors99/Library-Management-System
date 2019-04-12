@@ -181,7 +181,7 @@ public class UserEditView {
 		
 	}
 	
-	
+	/* Getters and setters for various fields */
 	public void setNameDisplay(String name) {
 		this.lblName.setText(name);
 	}
@@ -210,6 +210,7 @@ public class UserEditView {
 		return this.rdbtnClearFee;
 	}
 	
+	/* adding various action listeners to buttons */
 	public void addEditUserListener(ActionListener e) {
 		edit_button.addActionListener(e);
 	}

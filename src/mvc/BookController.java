@@ -20,7 +20,12 @@ public class BookController implements ControllerInterface{
 	public BookModel model;
 	
 	
-	
+	/**
+	 * Constructor for the controller
+	 * @param book - current book being assessed 
+	 * @param view - the view for the book
+	 * @param model - the model for the book
+	 */
 	public BookController(BooksAndStuff book, Book_view view, BookModel model){
 		this.book = book;
 		this.view = view;
@@ -41,11 +46,13 @@ public class BookController implements ControllerInterface{
 		
 		}
 			
-		
-		
-	//	view.addBackListener(new backToSearchListener());
 	}
 	
+	/**
+	 * 
+	 * Adds the functionality to borrow a book
+	 *
+	 */
 	public class orderListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			
@@ -121,7 +128,12 @@ public class BookController implements ControllerInterface{
 	
 
 }
-	
+
+	/**
+	 * 
+	 * Adds the functionality to return a book
+	 *
+	 */
 	public class returnListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			

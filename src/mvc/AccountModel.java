@@ -7,8 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 public class AccountModel{
 	
-	private int CHARGE_PER_WEEK=10; 
+	private int CHARGE_PER_WEEK=10; // the charge per week on the user
 
+	/**
+	 * Calculates the charge on the user depending on the current date
+	 * @param dates - an array containing all dates of the books borrowed by the user
+	 * @return - returns the total charge on the user
+	 */
 	public int calcTotalCharge(String[] dates) {
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
 		Date current_date= new Date();

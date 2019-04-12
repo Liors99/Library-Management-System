@@ -21,7 +21,12 @@ public class CryptoUtilities {
 	
 	private static final Random RANDOM = new SecureRandom();
 	
-	
+	/**
+	 * Concatenates two arrays
+	 * @param ar1 - first array
+	 * @param ar2 - second array
+	 * @return - (ar1 || ar2)
+	 */
 	public static byte[] Concatenate(byte[] ar1, byte[] ar2) {
 		byte[] result= new byte[ar1.length+ar2.length];
         System.arraycopy(ar1, 0, result, 0, ar1.length);
@@ -30,6 +35,11 @@ public class CryptoUtilities {
         return result;
 	}
 	
+	/**
+	 * Calculates the sha2 hash of some byte array
+	 * @param data - data fet into the sha2 algorithm
+	 * @return - h(data)
+	 */
 	public static byte[] sha2_hash(byte[] data){
 
 		byte[] hashval = null;

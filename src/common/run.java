@@ -14,6 +14,10 @@ import mvc.systemController;
 
 public class run {
 
+	/**
+	 * Main function from where the program starts
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MainFrame frame= new MainFrame();

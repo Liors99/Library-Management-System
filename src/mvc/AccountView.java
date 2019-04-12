@@ -182,13 +182,14 @@ public class AccountView extends JPanel{
 		
 		
 		
+		//Create a new table
 		tableItems = new JTable(tableModel);
 		scrollPane.setViewportView(tableItems);
 		tableItems.getTableHeader().setResizingAllowed(false);
 		tableItems.getTableHeader().setReorderingAllowed(false);
 		
 
-		
+		//make any row on the table clickable and redirect the user to the correct next screen
 		tableItems.getSelectionModel().addListSelectionListener(
 			    new ListSelectionListener() {
 			    	@Override

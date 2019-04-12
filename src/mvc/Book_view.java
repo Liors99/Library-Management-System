@@ -158,13 +158,26 @@ public class Book_view {
 		
 	}
 	
+	/**
+	 * Gets the button type (borrow or return)
+	 * @return - returns the type
+	 */
 	public String getButtonType() {
 		return this.button_type;
 	}
 	
+	/**
+	 * Adds return to the button
+	 * @param e
+	 */
 	public void addOrderListener(ActionListener e) {
 		order_button.addActionListener(e);
 	}
+	
+	/**
+	 * Adds functionality to go back from the screen
+	 * @param e
+	 */
 	public void addBackListener(ActionListener e) {
 		btnBackToSearch.addActionListener(e);
 	}

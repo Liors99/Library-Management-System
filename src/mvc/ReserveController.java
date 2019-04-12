@@ -31,19 +31,6 @@ public class ReserveController implements ControllerInterface{
 		
 		view.addOrderListener(new orderListener());
 		
-	/*	switch(view.getButtonType()) {
-			case "Borrow":
-				view.addOrderListener(new orderListener());
-				break;
-			case "Return":
-				break;
-			default:
-				break;
-		
-		}
-			*/
-		
-		
 		view.addBackListener(new backToSearchListener());
 	}
 	
@@ -55,22 +42,10 @@ public class ReserveController implements ControllerInterface{
 			//System.out.println("HERE");
 			int rentCount = 0;
 			
-		/*	try {
-			 ResultSet rents = book.getDataParser().performQuery("SELECT userRenter FROM rentalObj WHERE userRenter = '" + current_user.getCurrentUserName() + "'");//.getObject();
-			
-			 while(rents.next()) {
-				 rentCount++;
-			 }
-			
-			}catch(SQLException ex) {
-				
-			}
-			*/
+
 			if(numCheckedOut >= total) {
 				System.out.println("All copies are currently unavailable");
-			}//else if(rentCount >= 5){
-				//System.out.println("You have exceeded your rental capacity");
-		//	}
+			}
 			
 			else{
 				
@@ -107,7 +82,7 @@ public class ReserveController implements ControllerInterface{
 	
 
 }
-	
+	/* Adds a listener to the back button */
 	public class backToSearchListener implements ActionListener {
 	
 		public void actionPerformed(ActionEvent arg0) {

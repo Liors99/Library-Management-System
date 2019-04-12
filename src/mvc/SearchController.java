@@ -42,6 +42,11 @@ public class SearchController implements ControllerInterface{
 		this.model=model;
 	}
 	
+	/**
+	 * 
+	 * Allows the user to search for a book to borrow
+	 *
+	 */
 	class SearchListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			JTable table = view.getTable();
@@ -76,6 +81,9 @@ public class SearchController implements ControllerInterface{
 		}
 	}
 	
+	/*
+	 * Gets the currently selected button
+	 */
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();

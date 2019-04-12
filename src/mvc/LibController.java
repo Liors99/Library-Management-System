@@ -14,6 +14,12 @@ public class LibController implements ControllerInterface {
 	/* Used for queries */
 	DataParser data = new DataParser();
 
+	/**
+	 * Constructor the controller
+	 * @param libView - the librarian's view
+	 * @param libModel - the librarian's model
+	 * @param frame - the main frame of the program
+	 */
 	public LibController(LibView libView, LibModel libModel, MainFrame frame) {
 		// TODO Auto-generated constructor stub
 		this.view = libView;

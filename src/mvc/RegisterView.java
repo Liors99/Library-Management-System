@@ -151,6 +151,7 @@ public class RegisterView extends JPanel {
 		this.setVisible(true);
 	}
 	
+	/* Getters and setters for various fields */
 	public ArrayList<JTextField> getTextField(){
 		return this.all_fields;
 	}
@@ -190,7 +191,9 @@ public class RegisterView extends JPanel {
 		return this.textName.getText()+" "+this.textLastName.getText();
 	}
 	
-	
+	/*
+	 * Adds a listener to the blue text so that the user can switch back to login
+	 */
 	void addLoginScreenListener(LoginScreenListener log) {
 		lblLoginHere.addMouseListener(new MouseAdapter() {
 			@Override

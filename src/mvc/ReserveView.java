@@ -174,6 +174,7 @@ public class ReserveView {
 		
 	}
 	
+	/* Getters and setter for various fields */
 	public String getButtonType() {
 		return this.button_type;
 	}
@@ -187,6 +188,7 @@ public class ReserveView {
 		return numReserved;
 	}
 	
+	/* Adding ActionListeners to buttons */
 	public void addOrderListener(ActionListener e) {
 		order_button.addActionListener(e);
 	}

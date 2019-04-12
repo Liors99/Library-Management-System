@@ -160,15 +160,25 @@ public class AdminView extends JPanel {
 
 	}
 
+	/**
+	 * Gets the table model
+	 * @return - returns the table model
+	 */
 	public DefaultTableModel getTableModel() {
 		return this.tableModel;
 	}
 	
+	/**
+	 * Adds functionality to the logout button
+	 * @param listenForLogout
+	 */
 	void addLogoutListener(ActionListener listenForLogout) {
 		btnLogout.addActionListener(listenForLogout);
 	}
 	
-	
+	/**
+	 * Initalizes the table
+	 */
 	public void initTable() {
 		tableModel.setRowCount(0);
 		DataParser d = new DataParser();
