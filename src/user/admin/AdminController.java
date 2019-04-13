@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import database.DataParser;
 import mvc.ControllerInterface;
+import mvc.LoginModel;
 import mvc.LoginView;
 import mvc.MainFrame;
 import mvc.systemController;
@@ -46,7 +47,8 @@ public class AdminController implements ControllerInterface {
 	class LogoutListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			LoginView log_view = new LoginView();
-			systemController log_con = new systemController(log_view, frame);
+			LoginModel log_model = new LoginModel();
+			systemController log_con = new systemController(log_view, log_model, frame);
 
 			setPanel(view, log_view, frame);
 
