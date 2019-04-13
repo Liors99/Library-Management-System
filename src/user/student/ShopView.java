@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -27,6 +28,7 @@ public class ShopView extends JPanel {
 	private JTable tableSearchResults;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private String[] columnNames = {"Name", "Type", "Price"};
+	JPanel message = new JPanel();
 
 	/**
 	 * Create the panel.
@@ -175,6 +177,7 @@ public class ShopView extends JPanel {
 		        			ItemView item = new ItemView(name, price);
 		        			item.frame.setSize(300,130);
 		        			item.frame.setVisible(true);
+
 		                    }
 		        		}
 		        	}

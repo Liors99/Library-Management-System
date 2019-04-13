@@ -5,10 +5,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -16,10 +19,14 @@ public class ItemView extends JFrame {
 
 	private JPanel contentPane;
 	public JFrame frame;
-
+	JButton btnOrder = new JButton("Order");
+	String name;
+	String price;
+	JPanel message = new JPanel();
 	/**
 	 * Launch the application.
 	 */
+	/**
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,12 +39,13 @@ public class ItemView extends JFrame {
 			}
 		});
 	}
-
+	*/
 	/**
 	 * Create the frame.
 	 */
 	public ItemView(String name, String price) {
-
+		this.name = name;
+		this.price = price;
 		frame= new JFrame();
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -87,12 +95,31 @@ public class ItemView extends JFrame {
 		gbc_lblPrice.gridy = 3;
 		panel.add(lblPrice, gbc_lblPrice);
 		
-		JButton btnOrder = new JButton("Order");
 		GridBagConstraints gbc_btnOrder = new GridBagConstraints();
 		gbc_btnOrder.insets = new Insets(0, 0, 0, 5);
 		gbc_btnOrder.gridx = 2;
 		gbc_btnOrder.gridy = 8;
 		panel.add(btnOrder, gbc_btnOrder);
+		addOrderListener(new ShopListener());
+
 	}
 
+	/**
+	 * Listener for ordering
+	 * @param listenForOrder
+	 */
+	void addOrderListener(ActionListener listenForOrder) {
+
+		btnOrder.addActionListener(listenForOrder);
+	}
+	
+	/** 
+	 * Action taken after button press, dialog pops up
+	 */
+	class ShopListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			JOptionPane.showMessageDialog(message,
+					name + " purchased for " + price);
+			frame.setVisible(false);		}
+	}
 }
