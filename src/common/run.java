@@ -1,15 +1,8 @@
 package common;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import database.DataParser;
-import mvc.HomeView;
 import mvc.LoginModel;
 import mvc.LoginView;
 import mvc.MainFrame;
-import mvc.RegisterView;
 import mvc.systemController;
 
 public class run {

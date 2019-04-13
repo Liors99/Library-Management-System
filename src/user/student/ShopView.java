@@ -1,32 +1,26 @@
 package user.student;
 
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import java.awt.GridBagLayout;
-import javax.swing.JRadioButton;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.ButtonGroup;
 
-import database.BooksAndStuff;
 import database.DataParser;
 import mvc.ItemView;
-
-import java.sql.ResultSet;
 
 public class ShopView extends JPanel {
 	private JTextField textFieldSearch;
