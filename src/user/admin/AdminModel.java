@@ -2,12 +2,7 @@ package user.admin;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import database.User;
 

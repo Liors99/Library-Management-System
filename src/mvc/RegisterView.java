@@ -1,21 +1,23 @@
 package mvc;
 
-import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import mvc.RegisterController.LoginScreenListener;
-import mvc.systemController.RegisterScreenListener;
-
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Cursor;
 
 public class RegisterView extends JPanel {
 

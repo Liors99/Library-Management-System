@@ -1,5 +1,6 @@
 package database;
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class User {
 	private static DataParser data;

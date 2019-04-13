@@ -1,29 +1,18 @@
 package user.librarian;
 
 import java.awt.GridLayout;
-
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 
 import javax.swing.GroupLayout;
-
-import javax.swing.JDialog;
-
-import javax.swing.JOptionPane;
-
-import javax.swing.JPanel;
-
-import javax.swing.JScrollPane;
-
-import javax.swing.JTable;
-
 import javax.swing.GroupLayout.Alignment;
-
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
-
 import javax.swing.event.ListSelectionListener;
-
 import javax.swing.table.DefaultTableModel;
 
 import database.DataParser;

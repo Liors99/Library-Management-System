@@ -1,62 +1,21 @@
 package user.librarian;
 
 import java.awt.Color;
-
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
-
-import javax.swing.JButton;
-
-import javax.swing.JComponent;
-
-import javax.swing.JDialog;
-
-import javax.swing.JLabel;
-
-import javax.swing.JOptionPane;
-
-import javax.swing.JPanel;
-
 import javax.swing.GroupLayout.Alignment;
-
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-import javax.swing.event.ListSelectionEvent;
-
-import javax.swing.event.ListSelectionListener;
-
-import javax.swing.table.DefaultTableModel;
-
-import database.BooksAndStuff;
-
-import database.DataParser;
-
 import javax.swing.SwingConstants;
 
-import javax.swing.BoxLayout;
-
-import java.awt.BorderLayout;
-
-import java.awt.CardLayout;
-
-import java.awt.SystemColor;
-import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-
-import java.sql.SQLException;
-
-import javax.swing.JTabbedPane;
-
-import javax.swing.JTable;
-
-import java.awt.GridLayout;
-
-import java.awt.LayoutManager;
-
-import javax.swing.JScrollPane;
-
-import javax.swing.ScrollPaneConstants;
+import database.DataParser;
 
 public class LibView extends JPanel {
 

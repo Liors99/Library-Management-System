@@ -1,12 +1,15 @@
 package user.student;
 
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class ShopView extends JPanel {
 

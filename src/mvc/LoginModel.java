@@ -1,8 +1,6 @@
 package mvc;
 
-import java.io.IOException;
 import common.SecureAuthenticator;
-import database.DataParser;
 
 public class LoginModel {
 

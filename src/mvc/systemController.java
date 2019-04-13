@@ -1,19 +1,11 @@
 package mvc;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
-import common.SecureAuthenticator;
 import database.DataParser;
-import database.User;
 import user.admin.AdminController;
 import user.admin.AdminModel;
 import user.admin.AdminView;

@@ -1,22 +1,20 @@
 package mvc;
 
-import javax.swing.JPanel;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import user.student.SearchView;
 import user.student.ShopView;
-
-import javax.swing.JButton;
-import java.awt.CardLayout;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-
-import javax.swing.SwingConstants;
-import java.awt.event.ActionEvent;
 
 public class HomeView extends JPanel {
 

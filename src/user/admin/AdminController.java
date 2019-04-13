@@ -2,13 +2,8 @@ package user.admin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 import database.DataParser;
-import database.User;
 import mvc.ControllerInterface;
 import mvc.LoginView;
 import mvc.MainFrame;
