@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import database.DataParser;
+import user.student.ShopView;
 
 public class LibView extends JPanel {
 
@@ -68,14 +69,15 @@ public class LibView extends JPanel {
 		setLayout(groupLayout);
 
 		/* Here we have the panels for the tabbed panes */
-		JPanel stationaryShop = new JPanel();
-		JPanel publisherShop = new JPanel();
+		//JPanel stationaryShop = new JPanel();
+		//JPanel publisherShop = new JPanel();
 		BorrowedView borrowView = new BorrowedView();
-
+		ShopView shop = new ShopView();
 		/* Adding each panel to the tab */
 
-		tabbedPane.add("Order Stationary", stationaryShop);
-		tabbedPane.add("Order Books", publisherShop);
+		//tabbedPane.add("Order Stationary", stationaryShop);
+		//tabbedPane.add("Order Books", publisherShop);
+		tabbedPane.add("Order items", shop);
 		tabbedPane.add("Validate Returns", borrowView);
 
 		/**********************************

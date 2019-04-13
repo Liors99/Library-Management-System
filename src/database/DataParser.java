@@ -396,5 +396,35 @@ public class DataParser{
     		connected = false;
     	}
     }
+    
+    /**
+    *
+    * @param type
+    * @param query
+    * @return
+    */
+   public ResultSet searchShop(String type, String term) {
+       try{
+           String query  = "";
+           if(type == "clothing" || type == "books" || type == "supplies") {
+               query = "select * from shop where name like \"%" + term + "%\" and type = " + "\"" + type + "\"";
+               System.out.println("Query being performed is " + query);
+               return state.executeQuery(query);
+           }
+           else if(type == null) {
+               query = "select * from shop where name like \"%" + term + "%\";";
+               System.out.println("Query being performed is " + query);
+               return state.executeQuery(query);
+           }
+           else {
+               return null;
+           }
+       }
+       catch(SQLException ex) {
+          ex.printStackTrace();
+          connected = false;
+       }
+       return null;
+   }
 }
 
