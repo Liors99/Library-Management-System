@@ -22,16 +22,17 @@ public class DataParser{
     public DataParser(){
         try{
         	
-        	String hostname = "library.cmpuah4ctyme.us-east-1.rds.amazonaws.com";
+        	String hostname = "localhost";
         	String port = "3306";
         	String dbname = "library";
-        	String username = "lib";
+        	String username = "root";
         	String pw = "Library1";
         	
         	
-        	String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname + "?user=" + username + "&password=" + pw;
-        	
-        	connect = DriverManager.getConnection(jdbcUrl);
+        	//String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname + "?user=" + username + "&password=" + pw;
+        	String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname;
+
+        	connect = DriverManager.getConnection(jdbcUrl, username, pw);
             //connect = DriverManager.getConnection(db, user, pass);
             state = connect.createStatement();
             connected = true;
